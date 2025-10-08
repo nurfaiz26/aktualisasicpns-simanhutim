@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\KomentarTravel;
 use App\Models\UserData;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,10 +13,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('log_u_sers', function (Blueprint $table) {
+        Schema::create('laporan_komentar_travel', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(KomentarTravel::class);
             $table->foreignIdFor(UserData::class);
-            $table->text('keterangan');
+            $table->text('deskripsi');
+            $table->enum('status', ['pending', 'diterima', 'ditolak']);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('log_u_sers');
+        Schema::dropIfExists('laporan_komentar_travel');
     }
 };

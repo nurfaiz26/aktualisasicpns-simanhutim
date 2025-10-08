@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\UserData;
+use App\Models\Informasi;
+use App\Models\MasterKlasifikasiInformasi;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,10 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('log_u_sers', function (Blueprint $table) {
+        Schema::create('klasifikasi_informasis', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(UserData::class);
-            $table->text('keterangan');
+            $table->foreignIdFor(Informasi::class);
+            $table->foreignIdFor(MasterKlasifikasiInformasi::class);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('log_u_sers');
+        Schema::dropIfExists('klasifikasi_informasis');
     }
 };

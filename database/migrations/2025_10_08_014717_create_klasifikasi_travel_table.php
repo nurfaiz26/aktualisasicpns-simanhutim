@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\UserData;
+use App\Models\MasterKlasifikasiTravel;
+use App\Models\Travel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,10 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('log_u_sers', function (Blueprint $table) {
+        Schema::create('klasifikasi_travel', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(UserData::class);
-            $table->text('keterangan');
+            $table->foreignIdFor(Travel::class);
+            $table->foreignIdFor(MasterKlasifikasiTravel::class);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('log_u_sers');
+        Schema::dropIfExists('klasifikasi_travel');
     }
 };
