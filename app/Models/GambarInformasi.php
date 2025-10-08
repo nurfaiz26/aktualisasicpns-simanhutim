@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GabarInformasi extends Model
+class GambarInformasi extends Model
 {
-    /** @use HasFactory<\Database\Factories\GabarInformasiFactory> */
+    /** @use HasFactory<\Database\Factories\GambarInformasiFactory> */
     use HasFactory;
 }

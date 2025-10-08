@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('log_u_sers', function (Blueprint $table) {
+        Schema::create('log_users', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(UserData::class);
             $table->text('keterangan');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('log_u_sers');
+        Schema::dropIfExists('log_users');
     }
 };

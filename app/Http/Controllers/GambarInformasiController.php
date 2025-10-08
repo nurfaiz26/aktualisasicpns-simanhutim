@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreGabarInformasiRequest;
-use App\Http\Requests\UpdateGabarInformasiRequest;
-use App\Models\GabarInformasi;
+use App\Http\Requests\StoreGambarInformasiRequest;
+use App\Http\Requests\UpdateGambarInformasiRequest;
+use App\Models\GambarInformasi;
 
-class GabarInformasiController extends Controller
+class GambarInformasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class GabarInformasiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreGabarInformasiRequest $request)
+    public function store(StoreGambarInformasiRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class GabarInformasiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(GabarInformasi $gabarInformasi)
+    public function show(GambarInformasi $gambarInformasi)
     {
         //
     }
@@ -43,7 +43,7 @@ class GabarInformasiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(GabarInformasi $gabarInformasi)
+    public function edit(GambarInformasi $gambarInformasi)
     {
         //
     }
@@ -51,7 +51,7 @@ class GabarInformasiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateGabarInformasiRequest $request, GabarInformasi $gabarInformasi)
+    public function update(UpdateGambarInformasiRequest $request, GambarInformasi $gambarInformasi)
     {
         //
     }
@@ -59,7 +59,7 @@ class GabarInformasiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(GabarInformasi $gabarInformasi)
+    public function destroy(GambarInformasi $gambarInformasi)
     {
         //
     }

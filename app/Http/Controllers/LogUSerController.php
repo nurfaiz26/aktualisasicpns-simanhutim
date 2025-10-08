@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreLogUSerRequest;
-use App\Http\Requests\UpdateLogUSerRequest;
-use App\Models\LogUSer;
+use App\Http\Requests\StoreLogUserRequest;
+use App\Http\Requests\UpdateLogUserRequest;
+use App\Models\LogUser;
 
-class LogUSerController extends Controller
+class LogUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class LogUSerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLogUSerRequest $request)
+    public function store(StoreLogUserRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class LogUSerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(LogUSer $logUSer)
+    public function show(LogUser $logUser)
     {
         //
     }
@@ -43,7 +43,7 @@ class LogUSerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(LogUSer $logUSer)
+    public function edit(LogUser $logUser)
     {
         //
     }
@@ -51,7 +51,7 @@ class LogUSerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLogUSerRequest $request, LogUSer $logUSer)
+    public function update(UpdateLogUserRequest $request, LogUser $logUser)
     {
         //
     }
@@ -59,7 +59,7 @@ class LogUSerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(LogUSer $logUSer)
+    public function destroy(LogUser $logUser)
     {
         //
     }

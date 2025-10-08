@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\LogUSer>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\LogUser>
  */
-class LogUSerFactory extends Factory
+class LogUserFactory extends Factory
 {
     /**
      * Define the model's default state.

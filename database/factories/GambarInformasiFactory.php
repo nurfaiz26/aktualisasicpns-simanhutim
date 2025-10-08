@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\GabarInformasi>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\GambarInformasi>
  */
-class GabarInformasiFactory extends Factory
+class GambarInformasiFactory extends Factory
 {
     /**
      * Define the model's default state.

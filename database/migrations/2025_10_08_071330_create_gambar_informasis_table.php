@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gabar_informasis', function (Blueprint $table) {
+        Schema::create('gambar_informasis', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Informasi::class);
             $table->text('url');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gabar_informasis');
+        Schema::dropIfExists('gambar_informasis');
     }
 };
