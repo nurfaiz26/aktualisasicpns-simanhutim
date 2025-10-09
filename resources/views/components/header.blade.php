@@ -1,23 +1,4 @@
-{{-- <nav class="w-full px-10 py-4 flex items-center justify-between text-white font-bold">
-    <a href="#">
-        <div class="flex w-fit gap-2">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo Simanhutim"/>
-            <div class="flex flex-col max-w-[200px] justify-center">
-                <h1 class="text-xl">SIMANHUTIM</h1>
-                <p class="font-normal text-xs">Sarana Informasi dan Manajemen Data KBIHU Jatim</p>
-            </div>
-        </div>
-    </a>
-
-    <div class="flex w-fit">
-
-    </div>
-    <div>faiz</div>
-</nav>   --}}
-
-
-
-<nav class="w-full px-10 py-4 flex items-center justify-between text-white font-bold">
+<nav class="w-full px-4 md:px-10 py-4 flex items-center justify-between text-white font-bold">
     <div class="w-full flex flex-wrap items-center justify-between">
         <a href="#">
             <div class="flex w-fit gap-2">
@@ -50,27 +31,27 @@
 
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
             <ul
-                class="flex flex-col p-4 md:p-0 mt-4 font-medium border text-white bg-main md:bg-transparent border-main rounded-lg space-x-0 lg:space-x-2 xl:space-x-8 md:flex-row md:mt-0 md:border-0">
+                class="flex flex-col space-y-2 p-4 md:p-0 mt-4 font-medium border text-white bg-main md:bg-transparent border-main rounded-lg space-x-2 lg:space-x-4 xl:space-x-12 md:flex-row md:mt-0 md:border-0">
                 <li>
                     <a href="#"
-                        class="block py-2 px-3 rounded-sm md:bg-transparent "
+                        class="md:bg-transparent text-white"
                         aria-current="page">Beranda</a>
                 </li>
                 <li>
                     <a href="#"
-                        class="block py-2 px-3 rounded-sm hover:bg-gray-100 md:hover:bg-transparent">Berita</a>
+                        class="hover:bg-gray-100 md:hover:bg-transparent">Berita</a>
                 </li>
                 <li>
                     <a href="#"
-                        class="block py-2 px-3 rounded-sm hover:bg-gray-100 md:hover:bg-transparent">KBIHU</a>
+                        class="hover:bg-gray-100 md:hover:bg-transparent">KBIHU</a>
                 </li>
                 <li>
                     <a href="#"
-                        class="block py-2 px-3 rounded-sm hover:bg-gray-100 md:hover:bg-transparent">Info</a>
+                        class="hover:bg-gray-100 md:hover:bg-transparent">Info</a>
                 </li>
                 <li>
                     <a href="#"
-                        class="block py-2 px-3 rounded-sm hover:bg-gray-100 md:hover:bg-transparent">Tentang</a>
+                        class="hover:bg-gray-100 md:hover:bg-transparent">Tentang</a>
                 </li>
             </ul>
         </div>

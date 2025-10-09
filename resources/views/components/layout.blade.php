@@ -20,13 +20,15 @@
         @endif
     </head>
     <body>
-        <main class="h-screen">
-            <div class=" h-[360px] bg-gradient-to-b from-main to-white"></div>
+        <main class="min-h-screen relative">
+            <div class="h-[360px] bg-gradient-to-b from-main to-white"></div>
             
-            <div class="h-full w-full fixed top-0 left-0">
-                <x-header />
-
-                {{ $slot }}    
+            <div class="h-full w-full absolute top-0 left-0">
+                <x-header/>
+                    
+                <div class="w-full h-full">
+                    {{ $slot }}   
+                </div>
             </div>
         </main>
 
