@@ -20,12 +20,20 @@
         @endif
     </head>
     <body>
-        <main>
-            {{ $slot }}
+        <main class="h-screen">
+            <div class=" h-[360px] bg-gradient-to-b from-main to-white"></div>
+            
+            <div class="h-full w-full fixed top-0 left-0">
+                <x-header />
+
+                {{ $slot }}    
+            </div>
         </main>
 
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
     </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </html>
