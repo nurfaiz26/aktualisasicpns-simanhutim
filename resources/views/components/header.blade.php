@@ -1,8 +1,8 @@
 <nav class="w-full px-4 md:px-10 py-4 flex items-center justify-between text-white font-bold">
     <div class="w-full flex flex-wrap items-center justify-between">
         <a href="#">
-            <div class="flex w-fit gap-2">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo Simanhutim"/>
+            <div class="flex w-fit gap-4">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo Simanhutim" class="w-[34px] sm:w-[56px] md:w-[68px] h-auto"/>
                 <div class="flex flex-col max-w-[200px] justify-center">
                     <h1 class="text-sm md:text-xl">SIMANHUTIM</h1>
                     <p class="font-normal text-xs hidden md:block">Sarana Informasi dan Manajemen Data KBIHU Jatim</p>
@@ -15,6 +15,7 @@
                 <div class="flex gap-2 w-fit items-center">
                     <img src="{{ asset('images/user.png') }}" alt="Logo User" class="w-[32px] h-auto"/>
                     <p class="hidden xl:block">Login/Registrasi</p>
+                    {{-- <p class="hidden xl:block">Hi, Nama </p> --}}
                 </div>
             </a>
             <button data-collapse-toggle="navbar-sticky" type="button"
