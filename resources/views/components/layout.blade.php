@@ -25,10 +25,15 @@
             
             <div class="h-full w-full absolute top-0 left-0">
                 <x-header/>
-                    
+                
                 <div class="w-full h-full">
-                    {{ $slot }}   
+                    <div class="flex flex-col justify-between gap-10 w-full h-full">
+                        {{ $slot }}   
+                        
+                        <x-footer />
+                    </div>
                 </div>
+
             </div>
         </main>
 
