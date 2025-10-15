@@ -50,13 +50,13 @@
                     <a href="/berita" class="hover:bg-gray-100 md:hover:bg-transparent">Berita</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:bg-gray-100 md:hover:bg-transparent">KBIHU</a>
+                    <a href="/travel" class="hover:bg-gray-100 md:hover:bg-transparent">Travel</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:bg-gray-100 md:hover:bg-transparent">Info</a>
+                    <a href="/informasi" class="hover:bg-gray-100 md:hover:bg-transparent">Info</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:bg-gray-100 md:hover:bg-transparent">Tentang</a>
+                    <a href="/tentang" class="hover:bg-gray-100 md:hover:bg-transparent">Tentang</a>
                 </li>
             </ul>
         </div>

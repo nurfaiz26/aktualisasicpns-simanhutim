@@ -1,12 +1,18 @@
 <x-layout>
     <div class="w-full flex flex-col items-center space-y-10 px-10 lg:px-40">
-        <h1 class="mt-10 text-2xl font-extrabold text-white">Tentang</h1>
-
         <section class="mt-10 w-full flex flex-col items-center">
             <div class="aspect-[4/3] w-full max-w-xl h-auto bg-gray-500"></div>
         </section>
 
-        <section class="mt-10 w-full max-w-4xl flex flex-col items-center">
+        <section class="mt-10 w-full max-w-4xl flex flex-col items-start">
+            <h1 class="text-2xl font-extrabold text-main">Judul Informasi</h1>
+            <div class="flex text-main gap-1">
+                <p>Klasifikasi: </p>
+                <p>Umrah</p>
+                <p> | </p>
+                <p>PPIU</p>
+            </div>
+
             <div class="mt-10 text-main text-justify">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore quos tempora nam animi mollitia
                     exercitationem quisquam sint minus recusandae provident a nulla ipsa iure culpa voluptatum corporis,

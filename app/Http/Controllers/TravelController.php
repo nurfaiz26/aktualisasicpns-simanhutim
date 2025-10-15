@@ -13,7 +13,7 @@ class TravelController extends Controller
      */
     public function index()
     {
-        //
+        return view("travel.index");
     }
 
     /**
@@ -37,7 +37,7 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
-        //
+        return view("travel.show");
     }
 
     /**

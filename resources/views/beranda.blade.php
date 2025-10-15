@@ -19,11 +19,11 @@
                 <div class="w-full mt-2">
                     <div
                         class="w-full max-h-[280px] p-4 flex flex-col gap-2 border-2 border-main rounded-xl overflow-auto">
-                        <x-card-travel url="#" />
-                        <x-card-travel url="#" />
-                        <x-card-travel url="#" />
-                        <x-card-travel url="#" />
-                        <x-card-travel url="#" />
+                        <x-card-travel url="/travel/1" />
+                        <x-card-travel url="/travel/1" />
+                        <x-card-travel url="/travel/1" />
+                        <x-card-travel url="/travel/1" />
+                        <x-card-travel url="/travel/1" />
                     </div>
                 </div>
             </div>
@@ -35,16 +35,16 @@
 
             <div class="w-full mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 px-10 xl:px-40">
                 <div class="w-full flex justify-center">
-                    <x-card-info url="#" />
+                    <x-card-info url="/informasi/1" />
                 </div>
                 <div class="w-full flex justify-center">
-                    <x-card-info url="#" />
+                    <x-card-info url="/informasi/1" />
                 </div>
                 <div class="w-full flex justify-center">
-                    <x-card-info url="#" />
+                    <x-card-info url="/informasi/1" />
                 </div>
                 <div class="w-full flex justify-center">
-                    <x-card-info url="#" />
+                    <x-card-info url="/informasi/1" />
                 </div>
             </div>
         </section>

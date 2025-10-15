@@ -18,5 +18,5 @@ Route::get('/tentang', function () {
 Route::resource('/user', UserDataController::class);
 Route::resource('/auth', UserController::class);
 Route::resource('/informasi', InformasiController::class);
-Route::resource('/kbhu', TravelController::class);
+Route::resource('/travel', TravelController::class);
 Route::resource('/berita', BeritaController::class);
