@@ -11,24 +11,24 @@
             </div>
         </a>
 
-        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse items-center">
-            <a href="#">
-                <div class="flex gap-2 w-fit items-center">
+        {{-- <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse items-center"> --}}
+            {{-- <a href="#"> --}}
+                {{-- <div class="flex gap-2 w-fit items-center"> --}}
                     {{-- <img src="{{ asset('images/user.png') }}" alt="Logo User" class="w-[32px] h-auto"/> --}}
-                    <svg class="w-6 h-6 text-red-600" aria-hidden="true"
+                    {{-- <svg class="w-6 h-6 text-red-600" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         viewBox="0 0 24 24">
                         <path fill-rule="evenodd"
                             d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v5a1 1 0 1 0 2 0V8Zm-1 7a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H12Z"
                             clip-rule="evenodd" />
-                    </svg>
+                    </svg> --}}
 
                     {{-- <p class="hidden xl:block">Login/Registrasi</p> --}}
                     {{-- <p class="hidden xl:block">Hi, Nama </p> --}}
-                    <p class="hidden xl:block text-red-200">Laporan</p>
-                </div>
-            </a>
-            <button data-collapse-toggle="navbar-sticky" type="button"
+                    {{-- <p class="hidden xl:block text-red-200">Laporan</p> --}}
+                {{-- </div> --}}
+            {{-- </a> --}}
+            {{-- <button data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden group hover:bg-white focus:outline-none focus:ring-2 focus:ring-gray-200"
                 aria-controls="navbar-sticky" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
@@ -37,8 +37,19 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
-            </button>
-        </div>
+            </button> --}}
+        {{-- </div> --}}
+
+        <button data-collapse-toggle="navbar-sticky" type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden group hover:bg-white focus:outline-none focus:ring-2 focus:ring-gray-200"
+            aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5 text-white group-hover:text-main" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+        </button>
 
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
             <ul

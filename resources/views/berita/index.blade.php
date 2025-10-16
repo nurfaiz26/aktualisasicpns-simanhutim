@@ -47,6 +47,18 @@
                 <div class="w-full flex justify-center">
                     <x-card-berita url="/berita/1" />
                 </div>
+                <div class="w-full flex justify-center">
+                    <x-card-berita url="/berita/1" />
+                </div>
+                <div class="w-full flex justify-center">
+                    <x-card-berita url="/berita/1" />
+                </div>
+                <div class="w-full flex justify-center">
+                    <x-card-berita url="/berita/1" />
+                </div>
+                <div class="w-full flex justify-center">
+                    <x-card-berita url="/berita/1" />
+                </div>
             </div>
         </section>
     </div>
