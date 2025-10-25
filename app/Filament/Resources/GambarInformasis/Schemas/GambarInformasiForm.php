@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Filament\Resources\GambarBeritas\Schemas;
+namespace App\Filament\Resources\GambarInformasis\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
-class GambarBeritaForm
+class GambarInformasiForm
 {
     public static function configure(Schema $schema): Schema
     {
         return $schema
             ->components([
-                Select::make('berita_id')
-                    ->relationship('berita', 'judul')
+                Select::make('informasi_id')
+                    ->relationship('informasi', 'judul')
                     ->searchable()
                     ->required(),
                 FileUpload::make('url')

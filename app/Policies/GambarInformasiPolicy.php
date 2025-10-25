@@ -13,7 +13,7 @@ class GambarInformasiPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -21,7 +21,7 @@ class GambarInformasiPolicy
      */
     public function view(User $user, GambarInformasi $gambarInformasi): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -37,7 +37,7 @@ class GambarInformasiPolicy
      */
     public function update(User $user, GambarInformasi $gambarInformasi): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**

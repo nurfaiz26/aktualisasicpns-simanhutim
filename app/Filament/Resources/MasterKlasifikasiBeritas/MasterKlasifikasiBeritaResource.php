@@ -21,7 +21,7 @@ class MasterKlasifikasiBeritaResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::InboxStack;
 
-    protected static ?string $recordTitleAttribute = 'MasterKlasifikasiBerita';
+    protected static ?string $recordTitleAttribute = 'Master Klasifikasi Berita';
 
     protected static string|UnitEnum|null $navigationGroup = "Manajemen Berita";
 

@@ -13,14 +13,19 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class InformasiResource extends Resource
 {
     protected static ?string $model = Informasi::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::InformationCircle;
 
     protected static ?string $recordTitleAttribute = 'Informasi';
+
+    protected static string|UnitEnum|null $navigationGroup = "Manajemen Informasi";
+
+    protected static string|null $navigationLabel = "Informasi";
 
     public static function form(Schema $schema): Schema
     {

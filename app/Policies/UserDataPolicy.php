@@ -13,7 +13,7 @@ class UserDataPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -21,7 +21,7 @@ class UserDataPolicy
      */
     public function view(User $user, UserData $userData): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -37,7 +37,7 @@ class UserDataPolicy
      */
     public function update(User $user, UserData $userData): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -45,7 +45,7 @@ class UserDataPolicy
      */
     public function delete(User $user, UserData $userData): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -53,7 +53,7 @@ class UserDataPolicy
      */
     public function restore(User $user, UserData $userData): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -61,6 +61,6 @@ class UserDataPolicy
      */
     public function forceDelete(User $user, UserData $userData): bool
     {
-        return false;
+        return $user != null;
     }
 }

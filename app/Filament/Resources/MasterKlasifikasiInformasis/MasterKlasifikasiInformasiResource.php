@@ -15,14 +15,19 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use UnitEnum;
 
 class MasterKlasifikasiInformasiResource extends Resource
 {
     protected static ?string $model = MasterKlasifikasiInformasi::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::InboxStack;
 
     protected static ?string $recordTitleAttribute = 'Master Klasifikasi Informasi';
+
+    protected static string|UnitEnum|null $navigationGroup = "Manajemen Informasi";
+
+    protected static string|null $navigationLabel = "Master Klasifikasi Informasi";
 
     public static function form(Schema $schema): Schema
     {

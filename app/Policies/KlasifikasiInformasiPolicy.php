@@ -13,7 +13,7 @@ class KlasifikasiInformasiPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -21,7 +21,7 @@ class KlasifikasiInformasiPolicy
      */
     public function view(User $user, KlasifikasiInformasi $klasifikasiInformasi): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -37,7 +37,7 @@ class KlasifikasiInformasiPolicy
      */
     public function update(User $user, KlasifikasiInformasi $klasifikasiInformasi): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -45,7 +45,7 @@ class KlasifikasiInformasiPolicy
      */
     public function delete(User $user, KlasifikasiInformasi $klasifikasiInformasi): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -53,7 +53,7 @@ class KlasifikasiInformasiPolicy
      */
     public function restore(User $user, KlasifikasiInformasi $klasifikasiInformasi): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -61,6 +61,6 @@ class KlasifikasiInformasiPolicy
      */
     public function forceDelete(User $user, KlasifikasiInformasi $klasifikasiInformasi): bool
     {
-        return false;
+        return $user != null;
     }
 }

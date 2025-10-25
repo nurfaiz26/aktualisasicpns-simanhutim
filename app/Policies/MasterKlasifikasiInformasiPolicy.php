@@ -45,7 +45,7 @@ class MasterKlasifikasiInformasiPolicy
      */
     public function delete(User $user, MasterKlasifikasiInformasi $masterKlasifikasiInformasi): bool
     {
-        return $user != null;
+        return false;
     }
 
     /**
@@ -53,7 +53,7 @@ class MasterKlasifikasiInformasiPolicy
      */
     public function restore(User $user, MasterKlasifikasiInformasi $masterKlasifikasiInformasi): bool
     {
-        return $user != null;
+        return false;
     }
 
     /**
@@ -61,6 +61,6 @@ class MasterKlasifikasiInformasiPolicy
      */
     public function forceDelete(User $user, MasterKlasifikasiInformasi $masterKlasifikasiInformasi): bool
     {
-        return $user != null;
+        return false;
     }
 }

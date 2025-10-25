@@ -1,26 +1,31 @@
 <?php
 
-namespace App\Filament\Resources\MasterKlasifikasiBeritas\Tables;
+namespace App\Filament\Resources\KlasifikasiInformasis\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteAction;
+use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreAction;
+use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
-class MasterKlasifikasiBeritasTable
+class KlasifikasiInformasisTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('nama')
+                TextColumn::make('informasi.judul')
                     ->searchable(),
+                TextColumn::make('masterKlasifikasi.nama')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -40,13 +45,15 @@ class MasterKlasifikasiBeritasTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
-                RestoreAction::make(),
+                DeleteAction::make(), // Otomatis jadi Soft Delete
+                RestoreAction::make(), // Tombol untuk restore
                 ForceDeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
+                    ForceDeleteBulkAction::make(),
+                    RestoreBulkAction::make(),
                 ]),
             ]);
     }
