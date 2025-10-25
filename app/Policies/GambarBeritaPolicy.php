@@ -13,7 +13,7 @@ class GambarBeritaPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -21,7 +21,7 @@ class GambarBeritaPolicy
      */
     public function view(User $user, GambarBerita $gambarBerita): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -37,7 +37,7 @@ class GambarBeritaPolicy
      */
     public function update(User $user, GambarBerita $gambarBerita): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -45,7 +45,7 @@ class GambarBeritaPolicy
      */
     public function delete(User $user, GambarBerita $gambarBerita): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -53,7 +53,7 @@ class GambarBeritaPolicy
      */
     public function restore(User $user, GambarBerita $gambarBerita): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -61,6 +61,6 @@ class GambarBeritaPolicy
      */
     public function forceDelete(User $user, GambarBerita $gambarBerita): bool
     {
-        return false;
+        return $user != null;
     }
 }

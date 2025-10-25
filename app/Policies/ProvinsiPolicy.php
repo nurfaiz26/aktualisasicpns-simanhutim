@@ -13,7 +13,7 @@ class ProvinsiPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -21,7 +21,7 @@ class ProvinsiPolicy
      */
     public function view(User $user, Provinsi $provinsi): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -29,7 +29,7 @@ class ProvinsiPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -37,7 +37,7 @@ class ProvinsiPolicy
      */
     public function update(User $user, Provinsi $provinsi): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -45,7 +45,7 @@ class ProvinsiPolicy
      */
     public function delete(User $user, Provinsi $provinsi): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -53,7 +53,7 @@ class ProvinsiPolicy
      */
     public function restore(User $user, Provinsi $provinsi): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -61,6 +61,6 @@ class ProvinsiPolicy
      */
     public function forceDelete(User $user, Provinsi $provinsi): bool
     {
-        return false;
+        return $user != null;
     }
 }

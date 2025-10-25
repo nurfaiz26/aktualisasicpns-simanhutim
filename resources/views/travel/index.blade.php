@@ -1,7 +1,7 @@
 <x-layout>
     <div class="w-full flex flex-col items-center space-y-10">
         <section class="w-full flex flex-col items-center">
-            <h1 class="text-2xl text-white font-extrabold">Cari Berita</h1>
+            <h1 class="text-2xl text-white font-extrabold">Cari Travel</h1>
 
             <div class="w-full flex flex-col lg:flex-row justify-center items-center gap-2 mt-10 max-w-2xl px-10">
                 <div class="lg:flex-2 w-full">

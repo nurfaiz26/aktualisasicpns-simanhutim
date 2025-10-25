@@ -13,7 +13,7 @@ class BeritaPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -21,7 +21,7 @@ class BeritaPolicy
      */
     public function view(User $user, Berita $berita): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -29,7 +29,7 @@ class BeritaPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -37,7 +37,7 @@ class BeritaPolicy
      */
     public function update(User $user, Berita $berita): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -45,7 +45,7 @@ class BeritaPolicy
      */
     public function delete(User $user, Berita $berita): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -53,7 +53,7 @@ class BeritaPolicy
      */
     public function restore(User $user, Berita $berita): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -61,6 +61,6 @@ class BeritaPolicy
      */
     public function forceDelete(User $user, Berita $berita): bool
     {
-        return false;
+        return $user != null;
     }
 }

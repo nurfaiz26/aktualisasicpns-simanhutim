@@ -13,7 +13,7 @@ class LaporanTravelPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -21,7 +21,7 @@ class LaporanTravelPolicy
      */
     public function view(User $user, LaporanTravel $laporanTravel): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -29,7 +29,7 @@ class LaporanTravelPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -37,7 +37,7 @@ class LaporanTravelPolicy
      */
     public function update(User $user, LaporanTravel $laporanTravel): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -45,7 +45,7 @@ class LaporanTravelPolicy
      */
     public function delete(User $user, LaporanTravel $laporanTravel): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -53,7 +53,7 @@ class LaporanTravelPolicy
      */
     public function restore(User $user, LaporanTravel $laporanTravel): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -61,6 +61,6 @@ class LaporanTravelPolicy
      */
     public function forceDelete(User $user, LaporanTravel $laporanTravel): bool
     {
-        return false;
+        return $user != null;
     }
 }

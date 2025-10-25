@@ -13,7 +13,7 @@ class MasterKlasifikasiBeritaPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -21,7 +21,7 @@ class MasterKlasifikasiBeritaPolicy
      */
     public function view(User $user, MasterKlasifikasiBerita $masterKlasifikasiBerita): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -29,7 +29,7 @@ class MasterKlasifikasiBeritaPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -37,7 +37,7 @@ class MasterKlasifikasiBeritaPolicy
      */
     public function update(User $user, MasterKlasifikasiBerita $masterKlasifikasiBerita): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -45,7 +45,7 @@ class MasterKlasifikasiBeritaPolicy
      */
     public function delete(User $user, MasterKlasifikasiBerita $masterKlasifikasiBerita): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -53,7 +53,7 @@ class MasterKlasifikasiBeritaPolicy
      */
     public function restore(User $user, MasterKlasifikasiBerita $masterKlasifikasiBerita): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -61,6 +61,6 @@ class MasterKlasifikasiBeritaPolicy
      */
     public function forceDelete(User $user, MasterKlasifikasiBerita $masterKlasifikasiBerita): bool
     {
-        return false;
+        return $user != null;
     }
 }
