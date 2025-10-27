@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Travel extends Model
@@ -37,5 +38,15 @@ class Travel extends Model
     public function laporan(): BelongsTo
     {
         return $this->belongsTo(LaporanTravel::class);
+    }
+
+    public function gambars(): HasMany
+    {
+        return $this->hasMany(GambarTravel::class);
+    }
+
+    public function klasifikasis(): HasMany
+    {
+        return $this->hasMany(KlasifikasiTravel::class);
     }
 }

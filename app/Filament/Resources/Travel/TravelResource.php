@@ -13,14 +13,19 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class TravelResource extends Resource
 {
     protected static ?string $model = Travel::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::BuildingOffice2;
 
     protected static ?string $recordTitleAttribute = 'Travel';
+
+    protected static string|UnitEnum|null $navigationGroup = "Manajemen Travel";
+
+    protected static string|null $navigationLabel = "Travel";
 
     public static function form(Schema $schema): Schema
     {

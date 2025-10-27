@@ -3,7 +3,10 @@
 namespace App\Filament\Resources\Travel\Schemas;
 
 use App\Models\Kota;
+use App\Models\MasterKlasifikasiTravel;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -52,6 +55,28 @@ class TravelForm
                     ->required(),
                 DateTimePicker::make('tgl_akreditasi_akhir')
                     ->required(),
+                Repeater::make('klasifikasis')
+                    ->label('Klasifikasi Travel')
+                    ->minItems(1)
+                    ->relationship('klasifikasis')
+                    ->schema([
+                        Select::make('master_klasifikasi_travel_id')
+                            ->label('Klasifikasi')
+                            ->options(MasterKlasifikasiTravel::query()->pluck('nama', 'id'))
+                            ->distinct()
+                            ->required(),
+                    ]),
+                Repeater::make('gambars')
+                    ->label('Gambar Travel')
+                    ->minItems(1)
+                    ->relationship('gambars')
+                    ->schema([
+                        FileUpload::make('url')
+                            ->label('Gambar')
+                            ->image()
+                            ->required()
+                            ->maxSize(5120),
+                    ]),
             ]);
     }
 }

@@ -13,7 +13,7 @@ class KlasifikasiTravelPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -21,7 +21,7 @@ class KlasifikasiTravelPolicy
      */
     public function view(User $user, KlasifikasiTravel $klasifikasiTravel): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -37,7 +37,7 @@ class KlasifikasiTravelPolicy
      */
     public function update(User $user, KlasifikasiTravel $klasifikasiTravel): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -45,7 +45,7 @@ class KlasifikasiTravelPolicy
      */
     public function delete(User $user, KlasifikasiTravel $klasifikasiTravel): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -53,7 +53,7 @@ class KlasifikasiTravelPolicy
      */
     public function restore(User $user, KlasifikasiTravel $klasifikasiTravel): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -61,6 +61,6 @@ class KlasifikasiTravelPolicy
      */
     public function forceDelete(User $user, KlasifikasiTravel $klasifikasiTravel): bool
     {
-        return false;
+        return $user != null;
     }
 }

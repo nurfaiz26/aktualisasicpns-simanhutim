@@ -13,14 +13,19 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class KotaResource extends Resource
 {
     protected static ?string $model = Kota::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::BuildingLibrary;
 
     protected static ?string $recordTitleAttribute = 'Kota';
+
+    protected static string|UnitEnum|null $navigationGroup = "Master Daerah";
+
+    protected static string|null $navigationLabel = "Kota";
 
     public static function form(Schema $schema): Schema
     {

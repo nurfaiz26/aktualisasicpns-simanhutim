@@ -18,12 +18,12 @@ class Berita extends Model
         'status',
     ];
 
-    public function gambars():HasMany
+    public function gambars(): HasMany
     {
         return $this->hasMany(GambarBerita::class);
     }
 
-    public function klasifikasis():HasMany
+    public function klasifikasis(): HasMany
     {
         return $this->hasMany(KlasifikasiBerita::class);
     }

@@ -45,7 +45,7 @@ class GambarInformasiPolicy
      */
     public function delete(User $user, GambarInformasi $gambarInformasi): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -53,7 +53,7 @@ class GambarInformasiPolicy
      */
     public function restore(User $user, GambarInformasi $gambarInformasi): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -61,6 +61,6 @@ class GambarInformasiPolicy
      */
     public function forceDelete(User $user, GambarInformasi $gambarInformasi): bool
     {
-        return false;
+        return $user != null;
     }
 }

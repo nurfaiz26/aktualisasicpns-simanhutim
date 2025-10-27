@@ -13,7 +13,7 @@ class GambarTravelPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -21,7 +21,7 @@ class GambarTravelPolicy
      */
     public function view(User $user, GambarTravel $gambarTravel): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -37,7 +37,7 @@ class GambarTravelPolicy
      */
     public function update(User $user, GambarTravel $gambarTravel): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -45,7 +45,7 @@ class GambarTravelPolicy
      */
     public function delete(User $user, GambarTravel $gambarTravel): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -53,7 +53,7 @@ class GambarTravelPolicy
      */
     public function restore(User $user, GambarTravel $gambarTravel): bool
     {
-        return false;
+        return $user != null;
     }
 
     /**
@@ -61,6 +61,6 @@ class GambarTravelPolicy
      */
     public function forceDelete(User $user, GambarTravel $gambarTravel): bool
     {
-        return false;
+        return $user != null;
     }
 }

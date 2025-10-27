@@ -45,7 +45,7 @@ class MasterKlasifikasiTravelPolicy
      */
     public function delete(User $user, MasterKlasifikasiTravel $masterKlasifikasiTravel): bool
     {
-        return $user != null;
+        return false;
     }
 
     /**
@@ -53,7 +53,7 @@ class MasterKlasifikasiTravelPolicy
      */
     public function restore(User $user, MasterKlasifikasiTravel $masterKlasifikasiTravel): bool
     {
-        return $user != null;
+        return false;
     }
 
     /**
@@ -61,6 +61,6 @@ class MasterKlasifikasiTravelPolicy
      */
     public function forceDelete(User $user, MasterKlasifikasiTravel $masterKlasifikasiTravel): bool
     {
-        return $user != null;
+        return false;
     }
 }

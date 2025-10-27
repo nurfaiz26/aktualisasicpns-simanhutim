@@ -15,7 +15,7 @@ class LaporanTravel extends Model
     protected $fillable = [
         'nama',
         'travel_id',
-        'user_data_id',
+        'user_id',
         'deskripsi',
         'link_bukti',
         'status'

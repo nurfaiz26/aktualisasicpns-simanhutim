@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\LaporanTravel\Tables;
+namespace App\Filament\Resources\KlasifikasiTravel\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
@@ -11,28 +11,21 @@ use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
-use Filament\Forms\Components\Select;
-use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
-class LaporanTravelTable
+class KlasifikasiTravelTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
                 TextColumn::make('travel.nama')
+                    ->searchable(),
+                TextColumn::make('masterKlasifikasi.nama')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('user.userData.nama')
-                    ->numeric()
-                    ->formatStateUsing(fn ($state) => $state == null || $state == '' ? '-' : $state)
-                    ->sortable(),
-                SelectColumn::make('status')
-                    ->options(['pending' => 'Pending', 'diterima' => 'Diterima', 'ditolak' => 'Ditolak']),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -48,9 +41,6 @@ class LaporanTravelTable
             ])
             ->filters([
                 TrashedFilter::make(),
-                SelectFilter::make('status')
-                    ->options(['pending' => 'Pending', 'diterima' => 'Diterima', 'ditolak' => 'Ditolak'])
-                    ->searchable(),
             ])
             ->recordActions([
                 ViewAction::make(),
@@ -61,9 +51,9 @@ class LaporanTravelTable
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(), // Otomatis jadi Soft Delete
-                    RestoreBulkAction::make(), // Tombol restore massal
+                    DeleteBulkAction::make(),
                     ForceDeleteBulkAction::make(),
+                    RestoreBulkAction::make(),
                 ]),
             ]);
     }
