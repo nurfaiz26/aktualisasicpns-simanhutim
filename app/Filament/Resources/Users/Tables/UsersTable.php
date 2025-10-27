@@ -11,6 +11,7 @@ use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
@@ -25,6 +26,8 @@ class UsersTable
                     ->searchable(),
                 TextColumn::make('name')
                     ->searchable(),
+                SelectColumn::make('status')
+                    ->options(['aktif' => 'Aktif', 'nonaktif' => 'Nonaktif']),
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),

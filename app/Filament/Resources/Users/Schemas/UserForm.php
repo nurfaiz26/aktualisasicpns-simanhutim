@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Users\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -15,6 +16,10 @@ class UserForm
                 TextInput::make('username')
                     ->required(),
                 TextInput::make('name')
+                    ->required(),
+                Select::make('status')
+                    ->label('Status Berita')
+                    ->options(['aktif' => 'Aktif', 'nonaktif' => 'Nonaktif'])
                     ->required(),
                 TextInput::make('email')
                     ->label('Email address')
