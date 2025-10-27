@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\UserData\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
@@ -12,9 +13,9 @@ class UserDataForm
     {
         return $schema
             ->components([
-                TextInput::make('kota_id')
+                Select::make('kota_id')
                     ->required()
-                    ->numeric(),
+                    ->relationship('kota', 'nama'),
                 TextInput::make('nama')
                     ->required(),
                 TextInput::make('no_telepon')

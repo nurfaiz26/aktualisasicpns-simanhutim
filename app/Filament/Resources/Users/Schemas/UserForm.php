@@ -23,10 +23,12 @@ class UserForm
                 DateTimePicker::make('email_verified_at'),
                 TextInput::make('password')
                     ->password()
+                    ->confirmed()
                     ->required(),
-                TextInput::make('user_data_id')
+                TextInput::make('password_confirmation') // <— Add this field
+                    ->password()
                     ->required()
-                    ->numeric(),
+                    ->same('password'),
             ]);
     }
 }

@@ -45,7 +45,7 @@ class UserDataPolicy
      */
     public function delete(User $user, UserData $userData): bool
     {
-        return $user != null;
+        return false;
     }
 
     /**
@@ -53,7 +53,7 @@ class UserDataPolicy
      */
     public function restore(User $user, UserData $userData): bool
     {
-        return $user != null;
+        return false;
     }
 
     /**
@@ -61,6 +61,6 @@ class UserDataPolicy
      */
     public function forceDelete(User $user, UserData $userData): bool
     {
-        return $user != null;
+        return false;
     }
 }

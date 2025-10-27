@@ -45,7 +45,7 @@ class ProvinsiPolicy
      */
     public function delete(User $user, Provinsi $provinsi): bool
     {
-        return $user != null;
+        return false;
     }
 
     /**
@@ -53,7 +53,7 @@ class ProvinsiPolicy
      */
     public function restore(User $user, Provinsi $provinsi): bool
     {
-        return $user != null;
+        return false;
     }
 
     /**
@@ -61,6 +61,6 @@ class ProvinsiPolicy
      */
     public function forceDelete(User $user, Provinsi $provinsi): bool
     {
-        return $user != null;
+        return false;
     }
 }

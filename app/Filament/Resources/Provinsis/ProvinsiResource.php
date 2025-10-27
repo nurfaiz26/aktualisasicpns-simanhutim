@@ -19,7 +19,7 @@ class ProvinsiResource extends Resource
 {
     protected static ?string $model = Provinsi::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::BuildingLibrary;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::InboxStack;
 
     protected static ?string $recordTitleAttribute = 'Provinsi';
 
