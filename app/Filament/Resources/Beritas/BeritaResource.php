@@ -7,6 +7,7 @@ use App\Filament\Resources\Beritas\Pages\EditBerita;
 use App\Filament\Resources\Beritas\Pages\ListBeritas;
 use App\Filament\Resources\Beritas\Schemas\BeritaForm;
 use App\Filament\Resources\Beritas\Tables\BeritasTable;
+use App\Filament\Resources\Beritas\Widgets\BeritaOverview;
 use App\Models\Berita;
 use UnitEnum;
 use BackedEnum;

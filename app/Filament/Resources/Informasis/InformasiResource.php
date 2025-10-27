@@ -7,6 +7,7 @@ use App\Filament\Resources\Informasis\Pages\EditInformasi;
 use App\Filament\Resources\Informasis\Pages\ListInformasis;
 use App\Filament\Resources\Informasis\Schemas\InformasiForm;
 use App\Filament\Resources\Informasis\Tables\InformasisTable;
+use App\Filament\Resources\Informasis\Widgets\InformasiOverview;
 use App\Models\Informasi;
 use BackedEnum;
 use Filament\Resources\Resource;

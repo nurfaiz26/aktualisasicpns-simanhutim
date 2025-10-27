@@ -7,6 +7,7 @@ use App\Filament\Resources\Travel\Pages\EditTravel;
 use App\Filament\Resources\Travel\Pages\ListTravel;
 use App\Filament\Resources\Travel\Schemas\TravelForm;
 use App\Filament\Resources\Travel\Tables\TravelTable;
+use App\Filament\Widgets\TravelOverview;
 use App\Models\Travel;
 use BackedEnum;
 use Filament\Resources\Resource;
