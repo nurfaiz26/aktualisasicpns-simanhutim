@@ -7,6 +7,7 @@ use App\Filament\Resources\Travel\Pages\EditTravel;
 use App\Filament\Resources\Travel\Pages\ListTravel;
 use App\Filament\Resources\Travel\Schemas\TravelForm;
 use App\Filament\Resources\Travel\Tables\TravelTable;
+use App\Filament\Resources\TravelResource\Pages\ImportTravels;
 use App\Filament\Widgets\TravelOverview;
 use App\Models\Travel;
 use BackedEnum;
@@ -51,6 +52,7 @@ class TravelResource extends Resource
             'index' => ListTravel::route('/'),
             'create' => CreateTravel::route('/create'),
             'edit' => EditTravel::route('/{record}/edit'),
+            'import' => ImportTravels::route('/import'),
         ];
     }
 }
