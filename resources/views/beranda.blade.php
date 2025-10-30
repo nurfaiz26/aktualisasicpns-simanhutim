@@ -13,18 +13,21 @@
                 </div>
 
                 <div class="w-full mt-2">
-                    <x-search-input onInput="handleSearchInput()" />
+                    <x-search-input id="search-travel" />
                 </div>
 
                 <div class="w-full mt-2">
-                    <div
-                        class="w-full max-h-[280px] p-4 flex flex-col gap-2 border-2 border-main rounded-xl overflow-auto">
-                        <x-card-travel url="/travel/1" />
-                        <x-card-travel url="/travel/1" />
-                        <x-card-travel url="/travel/1" />
-                        <x-card-travel url="/travel/1" />
-                        <x-card-travel url="/travel/1" />
+                    <div id="travel-list"
+                        class="w-full max-h-[280px] p-4 flex flex-col gap-2 border-2 border-main rounded-xl overflow-auto"
+                        @if ($travels->isEmpty()) hidden @endif>
+                        @foreach ($travels as $travel)
+                            <x-card-travel :travel="$travel" />
+                        @endforeach
                     </div>
+
+                    <p id="empty-message" class="mt-10 text-main/66 text-center italic"
+                        @if (!$travels->isEmpty()) hidden @endif>Data Travel Kosong</p>
+
                 </div>
             </div>
         </section>
@@ -33,20 +36,19 @@
         <section class="w-full mt-10 flex flex-col items-center">
             <h1 class="text-main font-extrabold text-3xl">Informasi</h1>
 
-            <div class="w-full mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 px-10 xl:px-40">
-                <div class="w-full flex justify-center">
-                    <x-card-info url="/informasi/1" />
-                </div>
-                <div class="w-full flex justify-center">
-                    <x-card-info url="/informasi/1" />
-                </div>
-                <div class="w-full flex justify-center">
-                    <x-card-info url="/informasi/1" />
-                </div>
-                <div class="w-full flex justify-center">
-                    <x-card-info url="/informasi/1" />
-                </div>
+            <div class="w-full mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 px-10 xl:px-40"
+                @if ($informasis->isEmpty()) hidden @endif>
+                @foreach ($informasis as $informasi)
+                    <div class="w-full flex justify-center">
+                        <x-card-info :informasi="$informasi" />
+                    </div>
+                @endforeach
             </div>
+            @if ($informasis->isEmpty())
+                <div class="mt-10">
+                    <p class="text-main/66 text-center italic">Data Informasi Kosong</p>
+                </div>
+            @endif
         </section>
 
         {{-- Seksi bawah --}}
@@ -54,19 +56,13 @@
             <section class="w-full mt-10 flex flex-col items-center">
                 <h1 class="text-main font-extrabold text-3xl">Berita</h1>
 
-                <div class="w-full mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 px-10 xl:px-40">
-                    <div class="w-full flex justify-center">
-                        <x-card-berita url="/berita/1" />
-                    </div>
-                    <div class="w-full flex justify-center">
-                        <x-card-berita url="/berita/1" />
-                    </div>
-                    <div class="w-full flex justify-center">
-                        <x-card-berita url="/berita/1" />
-                    </div>
-                    <div class="w-full flex justify-center">
-                        <x-card-berita url="/berita/1" />
-                    </div>
+                <div class="w-full mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 px-10 xl:px-40"
+                    @if ($beritas->isEmpty()) hidden @endif>
+                    @foreach ($beritas as $berita)
+                        <div class="w-full flex justify-center">
+                            <x-card-berita :berita="$berita" />
+                        </div>
+                    @endforeach
                 </div>
             </section>
         </section>
@@ -74,7 +70,47 @@
 </x-layout>
 
 <script>
-    function handleSearchInput() {
-        console.log('faiz');
-    }
+    $(document).ready(function() {
+        const $search = $('#search-travel');
+        const $list = $('#travel-list');
+        const $empty = $('#empty-message');
+
+        function fetchTravels(query = '') {
+            $.ajax({
+                url: "/api/travel/search",
+                data: {
+                    keyword: query
+                },
+                beforeSend: function() {
+                    $list.html('<p class="text-center text-main/60 italic">Loading...</p>');
+                },
+                success: function(response) {
+                    if (response.count === 0) {
+                        $list.addClass('hidden').empty();
+                        $empty.removeClass('hidden');
+                    } else {
+                        $empty.addClass('hidden');
+                        $list.removeClass('hidden').html(response.html);
+                    }
+                },
+                error: function() {
+                    $empty.text('Terjadi kesalahan, coba lagi.').removeClass('hidden');
+                    $list.addClass('hidden');
+                }
+            });
+        }
+
+        // Debounce typing — only search after 300ms pause
+        let timeout = null;
+        $search.on('input', function() {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                const query = $(this).val().trim();
+                fetchTravels(query);
+            }, 300);
+        });
+
+        // Fetch initial data
+        fetchTravels();
+    });
 </script>

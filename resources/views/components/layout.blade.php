@@ -20,6 +20,9 @@
         @endif
     </head>
     <body>
+        @livewireStyles
+        @livewireScripts
+
         <main class="min-h-screen relative">
             <div class="h-[360px] bg-gradient-to-b from-main to-white"></div>
             
@@ -43,4 +46,5 @@
     </body>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </html>

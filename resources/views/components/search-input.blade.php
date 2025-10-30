@@ -9,8 +9,7 @@
             </svg>
         </div>
 
-        <input type="search" id="default-search" 
-        oninput="{{ $onInput }}"
+        <input type="search" id="{{ $id ?? '' }}" 
         class="block w-full p-4 ps-10 text-sm text-main font-bold placeholder-main/50 border-2 border-main rounded-full bg-gray-50 focus:ring-main focus:border-main"
             placeholder="Masukkan Kata Kunci..." required />
     </div>
