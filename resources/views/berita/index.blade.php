@@ -5,18 +5,11 @@
 
             <div class="mt-10 w-full overflow-auto py-4 pb-4 ps-10 xl:ps-40">
                 <div class="flex items-center gap-8">
-                    <div class="w-[480px]">
-                        <x-card-berita url="/berita/1" />
-                    </div>
-                    <div class="w-[480px]">
-                        <x-card-berita url="/berita/1" />
-                    </div>
-                    <div class="w-[480px]">
-                        <x-card-berita url="/berita/1" />
-                    </div>
-                    <div class="w-[480px]">
-                        <x-card-berita url="/berita/1" />
-                    </div>
+                    @foreach ($beritas as $berita)
+                        <div class="w-[480px]">
+                            <x-card-berita :berita="$berita" />
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -26,47 +19,93 @@
 
             <div class="w-full flex flex-col lg:flex-row justify-center items-center gap-2 mt-10 max-w-2xl px-10">
                 <div class="lg:flex-2 w-full">
-                    <x-search-input onInput="handleSearchInput()" />
+                    <x-search-input id="search-berita" />
                 </div>
 
                 <div class="lg:flex-1 w-full">
-                    <x-filter-select onChange="handleSearchInput()" />
+                    <x-filter-select id="filter-berita">
+                        <option selected>Pilih Klasifikasi</option>
+                        @foreach ($klasifikasis as $klasifikasi)
+                            <option value="{{ $klasifikasi->id }}">{{ $klasifikasi->nama }}</option>
+                        @endforeach
+                    </x-filter-select>
                 </div>
             </div>
 
-            <div class="w-full mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 px-10 xl:px-40">
-                <div class="w-full flex justify-center">
-                    <x-card-berita url="/berita/1" />
-                </div>
-                <div class="w-full flex justify-center">
-                    <x-card-berita url="/berita/1" />
-                </div>
-                <div class="w-full flex justify-center">
-                    <x-card-berita url="/berita/1" />
-                </div>
-                <div class="w-full flex justify-center">
-                    <x-card-berita url="/berita/1" />
-                </div>
-                <div class="w-full flex justify-center">
-                    <x-card-berita url="/berita/1" />
-                </div>
-                <div class="w-full flex justify-center">
-                    <x-card-berita url="/berita/1" />
-                </div>
-                <div class="w-full flex justify-center">
-                    <x-card-berita url="/berita/1" />
-                </div>
-                <div class="w-full flex justify-center">
-                    <x-card-berita url="/berita/1" />
-                </div>
+            <div id="berita-list" class="w-full mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 px-10 xl:px-40"
+                @if ($beritas->isEmpty()) hidden @endif>
+
+                @foreach ($beritas as $berita)
+                    <div class="w-full flex items-center justify-center">
+                        <div class="w-[480px]">
+                            <x-card-berita :berita="$berita" />
+                        </div>
+                    </div>
+                @endforeach
             </div>
+
+            <p id="empty-message" class="mt-10 text-main/66 text-center italic"
+                @if (!$beritas->isEmpty()) hidden @endif>Data Berita Kosong</p>
         </section>
     </div>
 </x-layout>
 
 <script>
-    function handleSearchInput()
-    {
-        console.log('faiz');
-    }
+    $(document).ready(function() {
+        const $search = $('#search-berita');
+        const $filter = $('#filter-berita');
+        const $list = $('#berita-list');
+        const $empty = $('#empty-message');
+
+        function fetchBerita(query = '', filter = '') {
+            $.ajax({
+                url: "/api/berita/search",
+                data: {
+                    keyword: query,
+                    filter: filter,
+                },
+                beforeSend: function() {
+                    $list.html('<p class="text-center text-main/60 italic">Loading...</p>');
+                },
+                success: function(response) {
+                    console.log(response);
+                    
+                    if (response.count === 0) {
+                        $list.addClass('hidden').empty();
+                        $empty.removeClass('hidden');
+                    } else {
+                        $empty.addClass('hidden');
+                        $list.removeClass('hidden').html(response.html);
+                    }
+                },
+                error: function() {
+                    $empty.text('Terjadi kesalahan, coba lagi.').removeClass('hidden');
+                    $list.addClass('hidden');
+                }
+            });
+        }
+
+        // Debounce typing — only search after 300ms pause
+        let timeout = null;
+        $search.on('input', function() {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                const query = $(this).val().trim();
+                const filter = $filter.val().trim();
+                console.log(filter);
+            }, 300);
+        });
+        
+        $filter.on('change', function() {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                const filter = $(this).val().trim();
+                const query = $search.val().trim();
+                fetchBerita(query, filter);
+            }, 300);
+        });
+
+        // Fetch initial data
+        fetchBerita();
+    });
 </script>

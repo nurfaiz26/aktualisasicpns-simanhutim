@@ -13,7 +13,7 @@ class BeritaPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class BeritaPolicy
      */
     public function view(User $user, Berita $berita): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**

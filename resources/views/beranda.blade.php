@@ -27,7 +27,6 @@
 
                     <p id="empty-message" class="mt-10 text-main/66 text-center italic"
                         @if (!$travels->isEmpty()) hidden @endif>Data Travel Kosong</p>
-
                 </div>
             </div>
         </section>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBeritaRequest;
 use App\Http\Requests\UpdateBeritaRequest;
 use App\Models\Berita;
+use App\Models\MasterKlasifikasiBerita;
 
 class BeritaController extends Controller
 {
@@ -13,7 +14,13 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        return view('berita.index');
+        $beritas = Berita::with('klasifikasis.masterKlasifikasi', 'gambars')->limit(5)->get();
+        $klasifikasis = MasterKlasifikasiBerita::all();
+
+        return view('berita.index', [
+            'beritas' => $beritas,
+            'klasifikasis' => $klasifikasis
+        ]);
     }
 
     /**
@@ -35,15 +42,15 @@ class BeritaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Berita $berita)
+    public function show(Berita $beritum)
     {
-        return view('berita.show');
+        return view('berita.show', ['berita' => $beritum->load('klasifikasis.masterKlasifikasi')]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Berita $berita)
+    public function edit(Berita $beritum)
     {
         //
     }
@@ -51,7 +58,7 @@ class BeritaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBeritaRequest $request, Berita $berita)
+    public function update(UpdateBeritaRequest $request, Berita $beritum)
     {
         //
     }
@@ -59,7 +66,7 @@ class BeritaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Berita $berita)
+    public function destroy(Berita $beritum)
     {
         //
     }
