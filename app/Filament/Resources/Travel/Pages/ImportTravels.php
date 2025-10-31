@@ -61,10 +61,13 @@ class ImportTravels extends Page implements HasForms
             // Membaca file CSV
             $csv = Reader::createFromPath($filePath, 'r');
             $csv->setHeaderOffset(0); // Anggap baris pertama adalah header
+            // --- TAMBAHKAN BARIS INI ---
+            $csv->setDelimiter(';');
 
             $records = $csv->getRecords();
 
             foreach ($records as $index => $record) {
+                dd($record);
                 // Sesuaikan nama kolom di CSV dengan kolom di database Anda
                 // Travel::create([
                 //     'nama_kolom_db_1' => $record['nama_kolom_csv_1'],

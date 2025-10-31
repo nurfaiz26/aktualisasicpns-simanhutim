@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreInformasiRequest;
 use App\Http\Requests\UpdateInformasiRequest;
 use App\Models\Informasi;
+use App\Models\KlasifikasiInformasi;
+use App\Models\MasterKlasifikasiInformasi;
 
 class InformasiController extends Controller
 {
@@ -13,7 +15,20 @@ class InformasiController extends Controller
      */
     public function index()
     {
-        return view("informasi.index");
+        // $klasifikasis = KlasifikasiInformasi::with('informasi', 'masterKlasifikasi')->get();
+        $mKlasifikasis = MasterKlasifikasiInformasi::all()->load('klasifikasis');
+        $klasifikasis = KlasifikasiInformasi::with('informasi')->whereIn('master_klasifikasi_informasi_id', $mKlasifikasis->pluck('id'))->get()->groupBy('masterKlasifikasi.nama');
+
+        $formattedArray = $klasifikasis->map(function ($items, $key) {
+            return [
+                'master_klasifikasi' => $key,
+                'klasifikasis' => $items->values(),
+            ];
+        })->values();
+
+        return view('informasi.index', [
+            'mKlasifikasis' => $formattedArray,
+        ]);
     }
 
     /**
@@ -37,7 +52,7 @@ class InformasiController extends Controller
      */
     public function show(Informasi $informasi)
     {
-        return view("informasi.show");
+        return view('informasi.show', ['informasi' => $informasi->load('klasifikasis.masterKlasifikasi')]);
     }
 
     /**

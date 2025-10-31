@@ -20,13 +20,13 @@
                     <div id="travel-list"
                         class="w-full max-h-[280px] p-4 flex flex-col gap-2 border-2 border-main rounded-xl overflow-auto"
                         @if ($travels->isEmpty()) hidden @endif>
-                        @foreach ($travels as $travel)
+                        {{-- @foreach ($travels as $travel)
                             <x-card-travel :travel="$travel" />
-                        @endforeach
+                        @endforeach --}}
                     </div>
 
-                    <p id="empty-message" class="mt-10 text-main/66 text-center italic"
-                        @if (!$travels->isEmpty()) hidden @endif>Data Travel Kosong</p>
+                    {{-- <p id="empty-message" class="mt-10 text-main/66 text-center italic"
+                        @if (!$travels->isEmpty()) hidden @endif>Data Travel Kosong</p> --}}
                 </div>
             </div>
         </section>
@@ -85,16 +85,16 @@
                 },
                 success: function(response) {
                     if (response.count === 0) {
-                        $list.addClass('hidden').empty();
-                        $empty.removeClass('hidden');
+                        $list.attr('hidden');
+                        $empty.removeAttr('hidden');
                     } else {
-                        $empty.addClass('hidden');
-                        $list.removeClass('hidden').html(response.html);
+                        $empty.attr('hidden');
+                        $list.removeAttr('hidden').html(response.html);
                     }
                 },
                 error: function() {
-                    $empty.text('Terjadi kesalahan, coba lagi.').removeClass('hidden');
-                    $list.addClass('hidden');
+                    $empty.text('Terjadi kesalahan, coba lagi.').removeAttr('hidden');
+                    $list.attr('hidden');
                 }
             });
         }

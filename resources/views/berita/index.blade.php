@@ -35,17 +35,16 @@
             <div id="berita-list" class="w-full mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 px-10 xl:px-40"
                 @if ($beritas->isEmpty()) hidden @endif>
 
-                @foreach ($beritas as $berita)
+                {{-- @foreach ($beritas as $berita)
                     <div class="w-full flex items-center justify-center">
                         <div class="w-[480px]">
                             <x-card-berita :berita="$berita" />
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
             </div>
 
-            <p id="empty-message" class="mt-10 text-main/66 text-center italic"
-                @if (!$beritas->isEmpty()) hidden @endif>Data Berita Kosong</p>
+            {{-- <p id="empty-message" class="mt-10 text-main/66 text-center italic" hidden>Data Berita Kosong</p> --}}
         </section>
     </div>
 </x-layout>
@@ -68,19 +67,17 @@
                     $list.html('<p class="text-center text-main/60 italic">Loading...</p>');
                 },
                 success: function(response) {
-                    console.log(response);
-                    
                     if (response.count === 0) {
-                        $list.addClass('hidden').empty();
-                        $empty.removeClass('hidden');
+                        $list.attr('hidden');
+                        $empty.removeAttr('hidden');
                     } else {
-                        $empty.addClass('hidden');
-                        $list.removeClass('hidden').html(response.html);
+                        $empty.attr('hidden');
+                        $list.removeAttr('hidden').html(response.html);
                     }
                 },
                 error: function() {
-                    $empty.text('Terjadi kesalahan, coba lagi.').removeClass('hidden');
-                    $list.addClass('hidden');
+                    $empty.text('Terjadi kesalahan, coba lagi.').removeAttr('hidden');
+                    $list.attr('hidden');
                 }
             });
         }
@@ -92,10 +89,10 @@
             timeout = setTimeout(() => {
                 const query = $(this).val().trim();
                 const filter = $filter.val().trim();
-                console.log(filter);
+                fetchBerita(query, filter);
             }, 300);
         });
-        
+
         $filter.on('change', function() {
             clearTimeout(timeout);
             timeout = setTimeout(() => {

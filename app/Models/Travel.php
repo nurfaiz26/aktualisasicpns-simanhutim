@@ -49,4 +49,9 @@ class Travel extends Model
     {
         return $this->hasMany(KlasifikasiTravel::class);
     }
+
+    public function komentarGoogles(): HasMany
+    {
+        return $this->hasMany(KomentarGoogleTravel::class);
+    }
 }

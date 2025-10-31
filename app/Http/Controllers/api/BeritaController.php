@@ -21,7 +21,7 @@ class BeritaController extends Controller
             return $q->where('master_klasifikasi_berita_id', $mKlasifikasi->id);
         })->get();
 
-        $beritas = Berita::with(['gambars', 'klasifikasis'])
+        $listBeritas = Berita::with(['gambars', 'klasifikasis'])
             ->when($keyword, function ($query, $keyword) {
                 $query->where('judul', 'like', '%' . $keyword . '%');
             })
@@ -33,11 +33,11 @@ class BeritaController extends Controller
             ->get();
 
         // Render Blade partial and return as HTML
-        $html = view('components.list-card-berita', compact('beritas'))->render();
+        $html = view('components.list-card-berita', compact('listBeritas'))->render();
 
         return response()->json([
             'html' => $html,
-            'count' => $beritas->count(),
+            'count' => $listBeritas->count(),
         ]);
     }
 }

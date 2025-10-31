@@ -77,6 +77,23 @@ class TravelForm
                             ->required()
                             ->maxSize(5120),
                     ]),
+                Repeater::make('komentarGoogles')
+                    ->label('Komentar Google')
+                    ->minItems(1)
+                    ->relationship('komentarGoogles')
+                    ->columnSpanFull()
+                    ->schema([
+                        TextInput::make('author_name')
+                            ->required(),
+                        TextInput::make('rating')
+                            ->required()
+                            ->numeric(),
+                        TextInput::make('time')
+                            ->required(),
+                        Textarea::make('text')
+                            ->required()
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 }

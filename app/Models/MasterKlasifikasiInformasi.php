@@ -18,6 +18,6 @@ class MasterKlasifikasiInformasi extends Model
 
     public function klasifikasis(): HasMany
     {
-        return $this->hasMany(KlasifikasiInformasi::class);
+        return $this->hasMany(KlasifikasiInformasi::class, 'master_klasifikasi_informasi_id', 'id');
     }
 }

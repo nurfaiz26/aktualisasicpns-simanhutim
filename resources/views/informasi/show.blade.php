@@ -1,27 +1,27 @@
 <x-layout>
     <div class="w-full flex flex-col items-center space-y-10 px-10 lg:px-40">
         <section class="mt-10 w-full flex flex-col items-center">
-            <div class="aspect-[4/3] w-full max-w-xl h-auto bg-gray-500"></div>
+            <div class="aspect-[4/3] w-full max-w-xl h-auto bg-transparent">
+                <img src="{{ asset(!$informasi->gambars->isEmpty() ? route('storage.image', $informasi->gambars[0]->url) : 'images/logo-grayscale.png') }}"
+                    alt="Logo Ilustrasi" class="w-full h-full object-contain" />
+            </div>
         </section>
 
         <section class="mt-10 w-full max-w-4xl flex flex-col items-start">
-            <h1 class="text-2xl font-extrabold text-main">Judul Informasi</h1>
+            <h1 class="text-2xl font-extrabold text-main">{{ $informasi->judul }}</h1>
             <div class="flex text-main gap-1">
                 <p>Klasifikasi: </p>
-                <p>Umrah</p>
-                <p> | </p>
-                <p>PPIU</p>
+                @foreach ($informasi->klasifikasis as $index => $klasifikasi)
+                    @if ($index == 0)
+                        {{ $klasifikasi->masterKlasifikasi->nama }}
+                    @else
+                        {{ ' | ' . $klasifikasi->masterKlasifikasi->nama }}
+                    @endif
+                @endforeach
             </div>
 
             <div class="mt-10 text-main text-justify">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore quos tempora nam animi mollitia
-                    exercitationem quisquam sint minus recusandae provident a nulla ipsa iure culpa voluptatum corporis,
-                    qui laudantium. Libero quo cumque fugit vero delectus architecto quia, illum debitis doloribus
-                    voluptate consequatur distinctio, expedita assumenda unde nisi asperiores neque, aspernatur
-                    repellendus facilis! Delectus laboriosam earum atque modi dolorem at aliquid omnis voluptas impedit
-                    nam, eos mollitia a et nemo non dolore, neque possimus ad laborum vitae harum perspiciatis
-                    doloremque. Voluptatum beatae nobis, rem unde esse tempora possimus accusamus reprehenderit. Ullam
-                    obcaecati facere sed molestias harum eum sunt velit incidunt nemo.</p>
+                <p>{{ $informasi->deskripsi }}</p>
             </div>
         </section>
     </div>
