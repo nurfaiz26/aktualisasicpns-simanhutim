@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->nullable();
             $table->text('deskripsi');
             $table->text('link_bukti');
-            $table->enum('status', ['pending', 'diterima', 'ditolak']);
+            $table->enum('status', ['pending', 'diterima', 'ditolak'])->default('pending');
             $table->timestamps();
             $table->softDeletes();
         });

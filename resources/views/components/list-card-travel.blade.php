@@ -1,3 +1,5 @@
-@foreach ($travels as $travel)
-    <x-card-travel :travel="$travel" />
+@foreach ($listTravels as $travel)
+    <div class="w-full flex justify-center">
+        <x-card-travel :travel="$travel" />
+    </div>
 @endforeach

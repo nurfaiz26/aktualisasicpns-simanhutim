@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('travel', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Kota::class);
+            $table->foreignIdFor(Kota::class)->nullable();
             $table->double('rating');
             $table->integer('jumlah_pelanggaran');
             $table->text('alamat');

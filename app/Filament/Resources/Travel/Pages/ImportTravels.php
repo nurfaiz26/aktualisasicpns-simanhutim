@@ -67,14 +67,11 @@ class ImportTravels extends Page implements HasForms
             $records = $csv->getRecords();
 
             foreach ($records as $index => $record) {
-                dd($record);
+                dd($record['NO']);
                 // Sesuaikan nama kolom di CSV dengan kolom di database Anda
-                // Travel::create([
-                //     'nama_kolom_db_1' => $record['nama_kolom_csv_1'],
-                //     'nama_kolom_db_2' => $record['nama_kolom_csv_2'],
-                //     'harga'           => $record['price'], // Contoh
-                //     // ... tambahkan semua kolom yang relevan
-                // ]);
+                Travel::create([
+                    'nama_kolom_db_1' => $record['nama_kolom_csv_1'],
+                ]);
             }
 
             // Jika semua berhasil, commit transaksi

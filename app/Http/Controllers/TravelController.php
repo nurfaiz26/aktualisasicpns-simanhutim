@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTravelRequest;
 use App\Http\Requests\UpdateTravelRequest;
+use App\Models\LaporanTravel;
+use App\Models\MasterKlasifikasiTravel;
 use App\Models\Travel;
+use Illuminate\Support\Facades\Auth;
 
 class TravelController extends Controller
 {
@@ -13,7 +16,13 @@ class TravelController extends Controller
      */
     public function index()
     {
-        return view("travel.index");
+        $travels = Travel::with('klasifikasis.masterKlasifikasi', 'gambars')->limit(5)->get();
+        $klasifikasis = MasterKlasifikasiTravel::all();
+
+        return view('travel.index', [
+            'travels' => $travels,
+            'klasifikasis' => $klasifikasis
+        ]);
     }
 
     /**
@@ -37,7 +46,7 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
-        return view("travel.show");
+        return view('travel.show', ['travel' => $travel->load('klasifikasis.masterKlasifikasi')]);
     }
 
     /**
@@ -62,5 +71,24 @@ class TravelController extends Controller
     public function destroy(Travel $travel)
     {
         //
+    }
+    
+    public function lapor(Travel $travel)
+    {
+        try {
+            //code...
+            LaporanTravel::create([
+                'travel_id' => $travel->id,
+                'user_id' => Auth::user(),
+                'deskripsi' => request()->deskripsi,
+                'link_bukti' => request()->linkBukti,
+            ]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            
+            return back()->with('gagal', 'Laporan Gagal Dikirim, message: ' . $th);
+        }
+
+        return back()->with('sukses', 'Laporan Berhasil Dikirim');
     }
 }
