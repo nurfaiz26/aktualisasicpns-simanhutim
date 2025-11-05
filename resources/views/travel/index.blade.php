@@ -10,7 +10,7 @@
 
                 <div class="lg:flex-1 w-full">
                     <x-filter-select id="filter-travel">
-                        <option selected>Pilih Klasifikasi</option>
+                        <option value="" selected>Pilih Klasifikasi</option>
                         @foreach ($klasifikasis as $klasifikasi)
                             <option value="{{ $klasifikasi->id }}">{{ $klasifikasi->nama }}</option>
                         @endforeach

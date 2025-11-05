@@ -3,14 +3,17 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, SoftDeletes;
@@ -49,6 +52,18 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Determine whether the user can access the given Filament panel.
+     *
+     * @param  \Filament\Panel  $panel
+     * @return bool
+     */
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // TODO: Replace with your real authorization logic (e.g. role check).
+        return true;
+    }
+
     public function laporanTravel(): HasMany
     {
         return $this->hasMany(LaporanTravel::class);
@@ -57,5 +72,5 @@ class User extends Authenticatable
     public function userData(): HasOne
     {
         return $this->hasOne(UserData::class);
-    } 
+    }
 }

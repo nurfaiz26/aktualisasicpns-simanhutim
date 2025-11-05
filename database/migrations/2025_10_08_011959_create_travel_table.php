@@ -14,10 +14,12 @@ return new class extends Migration
     {
         Schema::create('travel', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Kota::class)->nullable();
+            $table->foreignIdFor(Kota::class);
             $table->double('rating');
             $table->integer('jumlah_pelanggaran');
             $table->text('alamat');
+            $table->string('gmap_place_id')->nullable();
+            $table->string('gmap_url')->nullable();
             $table->string('nama');
             $table->string('no_telepon');
             $table->string('email');

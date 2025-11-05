@@ -24,7 +24,7 @@
 
             <div class="flex items-center gap-2">
                 <img src="{{ asset('images/location-pin.png') }}" alt="Pin Lokasi" class="w-4 h-4" />
-                <p class="font-normal text-main/66 truncate">{{ $travel->kota->nama }}</p>
+                <p class="font-normal text-main/66 truncate">{{ $travel->kota ? $travel->kota->nama : '-' }}</p>
             </div>
         </div>
     </div>

@@ -3,7 +3,11 @@
 namespace App\Filament\Resources\TravelResource\Pages;
 
 use App\Filament\Resources\Travel\TravelResource;
+use App\Models\KlasifikasiTravel;
+use App\Models\MasterKlasifikasiTravel;
 use App\Models\Travel; // <-- 1. Import model Anda
+use Carbon\Carbon;
+use Exception;
 use Filament\Actions\Action;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -66,12 +70,53 @@ class ImportTravels extends Page implements HasForms
 
             $records = $csv->getRecords();
 
-            foreach ($records as $index => $record) {
-                dd($record['NO']);
+            foreach ($records as $record) {
                 // Sesuaikan nama kolom di CSV dengan kolom di database Anda
-                Travel::create([
-                    'nama_kolom_db_1' => $record['nama_kolom_csv_1'],
+                $existingTravel = Travel::where('nama', 'LIKE', '%' . strtoupper($record['travel']) . '%')->first();
+
+                if ($existingTravel) {
+                    if ($record['klasifikasi'] == 'PPIU') {
+                        # code...
+                        KlasifikasiTravel::create([
+                            'travel_id' => $existingTravel->id,
+                            'master_klasifikasi_travel_id' => MasterKlasifikasiTravel::where('nama', 'PPIU')->first()->id,
+                        ]);
+                    } else if ($record['klasifikasi'] == 'PIHK') {
+                        KlasifikasiTravel::create([
+                            'travel_id' => $existingTravel->id,
+                            'master_klasifikasi_travel_id' => MasterKlasifikasiTravel::where('nama', 'PIHK')->first()->id,
+                        ]);
+                    }
+
+                    continue;
+                }
+
+                // dd($this->parseTanggal($record['tgl_sk']) ? $this->parseTanggal($record['tgl_sk']) . ' 00:00:00' : null);
+                // dd($record['akreditasi']);
+
+                $createTravel = Travel::create([
+                    'alamat' => $record['alamat'],
+                    'nama' => strtoupper($record['travel']),
+                    'no_telepon' => $record['no_telepon'],
+                    'email' => $record['email'],
+                    'direktur' => $record['direktur'],
+                    'no_sk' => $record['no_sk'],
+                    'akreditasi' => $record['akreditasi'] == "" || $record['akreditasi'] == null ? '-' : $record['akreditasi'],
+                    'tgl_sk' => $this->parseTanggal($record['tgl_sk']) ? $this->parseTanggal($record['tgl_sk']) . ' 00:00:00' : Carbon::create('1900'),
                 ]);
+
+                if ($record['klasifikasi'] == 'PPIU') {
+                    # code...
+                    KlasifikasiTravel::create([
+                        'travel_id' => $createTravel->id,
+                        'master_klasifikasi_travel_id' => MasterKlasifikasiTravel::where('nama', 'PPIU')->first()->id,
+                    ]);
+                } else if ($record['klasifikasi'] == 'PIHK') {
+                    KlasifikasiTravel::create([
+                        'travel_id' => $createTravel->id,
+                        'master_klasifikasi_travel_id' => MasterKlasifikasiTravel::where('nama', 'PIHK')->first()->id,
+                    ]);
+                }
             }
 
             // Jika semua berhasil, commit transaksi
@@ -95,5 +140,24 @@ class ImportTravels extends Page implements HasForms
                 ->danger()
                 ->send();
         }
+    }
+
+    function parseTanggal($tanggal)
+    {
+        if (empty($tanggal)) {
+            return null;
+        }
+
+        $formats = ['d/m/Y', 'Y-m-d', 'd-m-Y', 'm/d/Y'];
+
+        foreach ($formats as $format) {
+            try {
+                return Carbon::createFromFormat($format, trim($tanggal))->format('Y-m-d');
+            } catch (Exception $e) {
+                continue;
+            }
+        }
+
+        return Carbon::create('1900'); // kalau semua gagal
     }
 }

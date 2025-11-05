@@ -28,7 +28,7 @@
                             d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z"
                             clip-rule="evenodd" />
                     </svg>
-                    <p>{{ $travel->kota->nama }}</p>
+                    <p>{{ $travel->kota ? $travel->kota->nama : '-' }}</p>
                 </div>
                 <div class="flex gap-1 items-center text-main">
                     <svg class="w-6 h-6 text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@
                             d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
                     </svg>
 
-                    <p>4,6</p>
+                    <p>{{ $travel->rating }}</p>
                 </div>
 
                 <button type="button" data-modal-target="modal-lapor" data-modal-toggle="modal-lapor">
@@ -134,18 +134,32 @@
 
         <section class="mt-10 w-full flex flex-col justify-start">
             <div class="w-full flex gap-2">
-                <h1 class="font-extrabold text-main text-2xl">Komentar Google</h1>
+                <div class="flex gap-2 group">
+                    <a class="font-extrabold text-main text-2xl underline group-hover:text-main/66"
+                        href="{{ $travel->gmap_url ?? '#' }}" target="_blank">Komentar Google</a>
+
+                    <svg class="w-6 h-6 text-main group-hover:text-main/66" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778" />
+                    </svg>
+                </div>
 
                 <div class="border border-main h-1"></div>
             </div>
 
-            <div class="mt-10 w-full flex justify-center">
-                <x-card-travel-info>
-                    @foreach ($travel->komentarGoogles as $komentar)
+            @foreach ($travel->komentarGoogles as $komentar)
+                <div class="mt-10 w-full flex justify-center">
+                    <x-card-travel-info>
                         <x-komentar-travel :komentar="$komentar" />
-                    @endforeach
-                </x-card-travel-info>
-            </div>
+                    </x-card-travel-info>
+                </div>
+            @endforeach
+
+            @if ($travel->komentarGoogles->isEmpty())
+                <p class="text-main/66 text-center italic">Komentar Kosong</p>
+            @endif
         </section>
     </div>
 </x-layout>

@@ -28,6 +28,8 @@ class Travel extends Model
         'tgl_sk',
         'tgl_akreditasi_awal',
         'tgl_akreditasi_akhir',
+        'gmap_place_id',
+        'gmap_url'
     ];
 
     public function kota(): BelongsTo

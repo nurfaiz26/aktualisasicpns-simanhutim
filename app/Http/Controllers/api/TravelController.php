@@ -19,23 +19,31 @@ class TravelController extends Controller
 
         $mKlasifikasi = MasterKlasifikasiTravel::find($filter);
 
-        $klasifikasi = KlasifikasiTravel::when($mKlasifikasi, function ($q) use ($mKlasifikasi) {
-            return $q->where('master_klasifikasi_travel_id', $mKlasifikasi->id);
-        })->get();
+        $klasifikasi = KlasifikasiTravel::where('master_klasifikasi_travel_id', $mKlasifikasi ? $mKlasifikasi->id : null)
+            //     ->when($mKlasifikasi, function ($q) use ($mKlasifikasi) {
+            //     return $q->where('master_klasifikasi_travel_id', $mKlasifikasi->id);
+            // })
+            ->get();
 
         // return response()->json(!$klasifikasi->isEmpty());
 
         $listTravels = Travel::with(['gambars', 'klasifikasis'])
             ->when($keyword, function ($query, $keyword) {
-                $query->where('judul', 'like', '%' . $keyword . '%');
+                $query->where('nama', 'like', '%' . $keyword . '%');
             })
-            ->whereIn('id', $klasifikasi->pluck('id'))
+            ->when($filter, function ($query) use ($klasifikasi) {
+                $query->whereIn('id', $klasifikasi->pluck('travel_id'));
+            })
             ->where('status', 'aktif')
-            ->latest()
-            ->get();
+            ->latest()->limit(5)->get();
+
+        // $listTravels = ($keyword || $filter)
+        //     ? $query->paginate(10)
+        //     : $query->limit(5)->get();
+
 
         // Render Blade partial and return as HTML
-        $html = view('components.list-card-travel', compact('listTravels'))->render();
+        $html = view('components.list-card-travel', compact('listTravels', 'keyword', 'filter'))->render();
 
         return response()->json([
             'html' => $html,

@@ -19,14 +19,14 @@ class TravelForm
         return $schema
             ->components([
                 Select::make('kota_id')
-                    ->required()
+                    ->nullable()
                     ->relationship('kota', 'nama'),
                 TextInput::make('rating')
-                    ->required()
+                    ->nullable()
                     ->maxValue(5)
                     ->numeric(),
                 TextInput::make('jumlah_pelanggaran')
-                    ->required()
+                    ->nullable()
                     ->numeric(),
                 Textarea::make('alamat')
                     ->required()
@@ -52,9 +52,13 @@ class TravelForm
                 DateTimePicker::make('tgl_sk')
                     ->required(),
                 DateTimePicker::make('tgl_akreditasi_awal')
-                    ->required(),
+                    ->nullable(),
                 DateTimePicker::make('tgl_akreditasi_akhir')
-                    ->required(),
+                    ->nullable(),
+                TextInput::make('gmap_place_id')
+                    ->nullable(),
+                TextInput::make('gmap_url')
+                    ->nullable(),
                 Repeater::make('klasifikasis')
                     ->label('Klasifikasi Travel')
                     ->minItems(1)
@@ -68,7 +72,7 @@ class TravelForm
                     ]),
                 Repeater::make('gambars')
                     ->label('Gambar Travel')
-                    ->minItems(1)
+                    // ->minItems(1)
                     ->relationship('gambars')
                     ->schema([
                         FileUpload::make('url')
@@ -79,7 +83,7 @@ class TravelForm
                     ]),
                 Repeater::make('komentarGoogles')
                     ->label('Komentar Google')
-                    ->minItems(1)
+                    // ->minItems(1)
                     ->relationship('komentarGoogles')
                     ->columnSpanFull()
                     ->schema([
@@ -88,7 +92,7 @@ class TravelForm
                         TextInput::make('rating')
                             ->required()
                             ->numeric(),
-                        TextInput::make('time')
+                        DateTimePicker::make('time')
                             ->required(),
                         Textarea::make('text')
                             ->required()
