@@ -37,9 +37,9 @@ class Travel extends Model
         return $this->belongsTo(Kota::class);
     }
 
-    public function laporan(): BelongsTo
+    public function laporans(): HasMany
     {
-        return $this->belongsTo(LaporanTravel::class);
+        return $this->hasMany(LaporanTravel::class);
     }
 
     public function gambars(): HasMany

@@ -113,3 +113,28 @@
         fetchTravels();
     });
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!sessionStorage.getItem('popupShown')) {
+            Swal.fire({
+                title: 'Halo!',
+                text: 'Kami ingin mendengar saran dan masukan Anda. Yuk isi survei singkat kami!',
+                icon: 'info',
+                confirmButtonText: 'Isi Survei',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                backdrop: true,
+                confirmButtonColor: '#2596be',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.open(
+                        'https://docs.google.com/forms/d/e/1FAIpQLSeOxdENaS0W5doGxvIF2rzT-DkokHaD0NAKEgfUB7RUbAx2Mw/viewform?usp=dialog',
+                        '_blank');
+                }
+            });
+
+            sessionStorage.setItem('popupShown', true);
+        }
+    });
+</script>

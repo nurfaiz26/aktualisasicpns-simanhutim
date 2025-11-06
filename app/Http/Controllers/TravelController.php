@@ -77,16 +77,16 @@ class TravelController extends Controller
     {
         try {
             //code...
-            LaporanTravel::create([
+            $laporan = LaporanTravel::create([
                 'travel_id' => $travel->id,
-                'user_id' => Auth::user(),
+                'user_id' => Auth::user() ? Auth::user()->id : null,
                 'deskripsi' => request()->deskripsi,
-                'link_bukti' => request()->linkBukti,
+                'link_bukti' => request()->link_bukti,
             ]);
-        } catch (\Throwable $th) {
+        } catch (\Exception $e) {
             //throw $th;
             
-            return back()->with('gagal', 'Laporan Gagal Dikirim, message: ' . $th);
+            return back()->with('error', 'Laporan Gagal Dikirim, message: ' . $e->getMessage());
         }
 
         return back()->with('sukses', 'Laporan Berhasil Dikirim');

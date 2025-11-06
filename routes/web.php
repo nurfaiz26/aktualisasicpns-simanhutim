@@ -42,4 +42,4 @@ Route::resource('/auth', UserController::class);
 Route::resource('/informasi', InformasiController::class);
 Route::resource('/berita', BeritaController::class);
 Route::resource('/travel', TravelController::class);
-Route::post('/travel/lapor', [TravelController::class, 'laporan']);
+Route::post('/travel/lapor/{travel}', [TravelController::class, 'lapor']);

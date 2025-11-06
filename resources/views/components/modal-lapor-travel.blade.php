@@ -22,18 +22,21 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5">
-                <form class="space-y-4" action="#">
+                <form class="space-y-4" action="/travel/lapor/{{ $travelId }}" method="POST">
+                    @method('POST')
+                    @csrf
+
                     <div>
-                        <label for="bukti" class="block mb-2 text-sm font-medium text-red-400">Keterangan
+                        <label for="deskripsi" class="block mb-2 text-sm font-medium text-red-400">Deskripsi
                             Laporan</label>
 
-                        <textarea id="message" rows="4"
+                        <textarea id="deskripsi" rows="4" name="deskripsi"
                             class="block p-2.5 w-full text-sm text-red-500 bg-gray-50 rounded-lg border border-red-500 focus:ring-red-500 focus:border-red-50 placeholder:text-red-400"
-                            placeholder="Masukkan keterangan laporan"></textarea>
+                            placeholder="Masukkan deskripsi laporan"></textarea>
                     </div>
                     <div>
-                        <label for="bukti" class="block mb-2 text-sm font-medium text-red-400">Bukti Laporan</label>
-                        <input type="text" name="bukti" id="bukti" placeholder="Link Bukti Laporan"
+                        <label for="link_bukti" class="block mb-2 text-sm font-medium text-red-400">Link Bukti Laporan</label>
+                        <input type="text" name="link_bukti" id="link_bukti" placeholder="Link Bukti Laporan"
                             class="bg-gray-50 border border-red-500 text-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 placeholder:text-red-400"
                             required />
                     </div>

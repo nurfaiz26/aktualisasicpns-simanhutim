@@ -19,16 +19,17 @@
             </style>
         @endif
 
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        {{-- tailwind cdn --}}
+        {{-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <style type="text/tailwindcss">
             @theme {
                 --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
-                    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-                    "Noto Color Emoji";
-
+                "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+                "Noto Color Emoji";
+                
                 --color-main: #2596be;
-            }
-        </style>
+                }
+            </style> --}}
     </head>
     <body>
         @livewireStyles
@@ -54,6 +55,10 @@
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
+
+        {{-- Letakkan di paling bawah sebelum </body> --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @stack('scripts')
     </body>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>

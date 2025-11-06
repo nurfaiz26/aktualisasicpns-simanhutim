@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\Travel\Schemas;
 
-use App\Models\Kota;
+use App\Models\LaporanTravel;
 use App\Models\MasterKlasifikasiTravel;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
@@ -10,7 +10,10 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 
 class TravelForm
 {
@@ -98,6 +101,28 @@ class TravelForm
                             ->required()
                             ->columnSpanFull(),
                     ]),
+
+                Section::make('Laporan Travel')
+                ->columnSpanFull()
+                    ->description('Daftar laporan yang terkait dengan travel ini')
+                    ->schema([
+                        Repeater::make('laporans')
+                            ->relationship('laporans') // relasi hasMany
+                            ->schema([
+                                TextInput::make('deskripsi')->label('Deskripsi'),
+                                TextInput::make('link_bukti')->label('Link Bukti'),
+                                DateTimePicker::make('created_at')->label('Created At'),
+                                Select::make('status')->label('Status')->options(['pending' => 'Pending', 'diterima' => 'Diterima', 'ditolak' => 'Ditolak']),
+                            ])
+                            // ->disabled() // kalau hanya ingin tampilkan tanpa bisa ubah
+                            ->columns(3)
+                            ->collapsible(),
+                    ])
+                    ->visible(
+                        fn($livewire) =>
+                        $livewire instanceof \Filament\Resources\Pages\EditRecord ||
+                            $livewire instanceof \Filament\Resources\Pages\ViewRecord
+                    ),
             ]);
     }
 }
