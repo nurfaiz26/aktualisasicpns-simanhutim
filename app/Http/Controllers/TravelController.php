@@ -46,6 +46,11 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
+        if ($travel->status == 'nonaktif') {
+            # code...
+            return abort(403, "Travel tidak aktif!");
+        }
+
         return view('travel.show', ['travel' => $travel->load('klasifikasis.masterKlasifikasi')]);
     }
 

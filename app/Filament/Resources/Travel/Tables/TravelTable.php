@@ -136,7 +136,7 @@ class TravelTable
                         //     'fields' => 'place_id',
                         //     'key' => $googleApiKey,
                         // ]);
-                        
+
                         try {
                             //code...
                             # code...
@@ -172,6 +172,13 @@ class TravelTable
                                     $record->update([
                                         'gmap_url' => isset($result['url']) ? $result['url'] : null
                                     ]);
+
+                                    // ✅ Update rating
+                                    if (isset($result['rating'])) {
+                                        $record->update([
+                                            'rating' => $result['rating'],
+                                        ]);
+                                    }
 
                                     // ✅ Store comments (reviews)
                                     if (isset($result['reviews'])) {
@@ -305,6 +312,13 @@ class TravelTable
                                             $travel->update([
                                                 'gmap_url' => isset($result['url']) ? $result['url'] : null
                                             ]);
+
+                                            // ✅ Update rating
+                                            if (isset($result['rating'])) {
+                                                $travel->update([
+                                                    'rating' => $result['rating'],
+                                                ]);
+                                            }
 
                                             // ✅ Store comments (reviews)
                                             if (isset($result['reviews'])) {

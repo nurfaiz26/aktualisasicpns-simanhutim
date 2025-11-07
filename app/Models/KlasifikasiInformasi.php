@@ -19,7 +19,7 @@ class KlasifikasiInformasi extends Model
 
     public function informasi(): BelongsTo
     {
-        return $this->belongsTo(Informasi::class);
+        return $this->belongsTo(Informasi::class)->where('status', 'aktif');
     }
 
     public function masterKlasifikasi(): BelongsTo

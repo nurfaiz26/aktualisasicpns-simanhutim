@@ -14,7 +14,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $beritas = Berita::with('klasifikasis.masterKlasifikasi', 'gambars')->limit(5)->get();
+        $beritas = Berita::with('klasifikasis.masterKlasifikasi', 'gambars')->where('status', 'aktif')->limit(5)->get();
         $klasifikasis = MasterKlasifikasiBerita::all();
 
         return view('berita.index', [
@@ -44,6 +44,11 @@ class BeritaController extends Controller
      */
     public function show(Berita $beritum)
     {
+        if ($beritum->status == 'nonaktif') {
+            # code...
+            return abort(403, "Berita tidak aktif!");
+        }
+
         return view('berita.show', ['berita' => $beritum->load('klasifikasis.masterKlasifikasi')]);
     }
 

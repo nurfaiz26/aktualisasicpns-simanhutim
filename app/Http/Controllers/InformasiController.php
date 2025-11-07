@@ -52,6 +52,11 @@ class InformasiController extends Controller
      */
     public function show(Informasi $informasi)
     {
+        if ($informasi->status == 'nonaktif') {
+            # code...
+            return abort(403, "Informasi tidak aktif!");
+        }
+
         return view('informasi.show', ['informasi' => $informasi->load('klasifikasis.masterKlasifikasi')]);
     }
 

@@ -11,9 +11,9 @@ use App\Models\Travel;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $informasis = Informasi::with('klasifikasis.masterKlasifikasi', 'gambars')->limit(5)->get();
-    $beritas = Berita::with('klasifikasis.masterKlasifikasi', 'gambars')->limit(5)->get();
-    $travels = Travel::with('klasifikasis.masterKlasifikasi', 'gambars', 'kota')->limit(5)->get();
+    $informasis = Informasi::with('klasifikasis.masterKlasifikasi', 'gambars')->where('status', 'aktif')->limit(5)->get();
+    $beritas = Berita::with('klasifikasis.masterKlasifikasi', 'gambars')->where('status', 'aktif')->limit(5)->get();
+    $travels = Travel::with('klasifikasis.masterKlasifikasi', 'gambars', 'kota')->where('status', 'aktif')->limit(5)->get();
 
     return view('beranda', [
         'informasis' => $informasis,

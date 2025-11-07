@@ -24,7 +24,7 @@
 
                 <div class="lg:flex-1 w-full">
                     <x-filter-select id="filter-berita">
-                        <option selected>Pilih Klasifikasi</option>
+                        <option value="" selected>Pilih Klasifikasi</option>
                         @foreach ($klasifikasis as $klasifikasi)
                             <option value="{{ $klasifikasi->id }}">{{ $klasifikasi->nama }}</option>
                         @endforeach
@@ -56,7 +56,7 @@
         const $list = $('#berita-list');
         const $empty = $('#empty-message');
 
-        function fetchBerita(query = '', filter = '') {
+        function fetchBerita(query = '', filter = '') {            
             $.ajax({
                 url: "/api/berita/search",
                 data: {
@@ -66,7 +66,7 @@
                 beforeSend: function() {
                     $list.html('<p class="text-center text-main/60 italic">Loading...</p>');
                 },
-                success: function(response) {
+                success: function(response) {                                        
                     if (response.count === 0) {
                         $list.attr('hidden');
                         $empty.removeAttr('hidden');

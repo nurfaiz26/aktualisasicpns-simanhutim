@@ -25,7 +25,9 @@ class BeritaController extends Controller
             ->when($keyword, function ($query, $keyword) {
                 $query->where('judul', 'like', '%' . $keyword . '%');
             })
-            ->whereIn('id', $klasifikasi->pluck('id'))
+            ->when($filter, function ($query) use ($klasifikasi) {
+                $query->whereIn('id', $klasifikasi->pluck('berita_id'));
+            })
             ->where('status', 'aktif')
             ->latest()
             ->get();

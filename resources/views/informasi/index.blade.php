@@ -14,12 +14,15 @@
                     @foreach ($mKlasifikasis as $index => $mKlasifikasi)
                         <x-accordion.heading judul="{{ $mKlasifikasi['master_klasifikasi'] }}"
                             accordionHeadingId="accordion-heading-{{ $index }}"
-                            accordionBodyId="accordion-body-{{ $index }}" isOpen="{{ $index == 0 ? 'true' : 'false' }}" />
+                            accordionBodyId="accordion-body-{{ $index }}"
+                            isOpen="{{ $index == 0 ? 'true' : 'false' }}" />
                         <x-accordion.body accordionHeadingId="accordion-heading-{{ $index }}"
                             accordionBodyId="accordion-body-{{ $index }}">
                             @foreach ($mKlasifikasi['klasifikasis'] as $klasifikasi)
                                 <div class="w-full flex justify-center">
-                                    <x-card-info :informasi="$klasifikasi->informasi" />
+                                    @if ($klasifikasi->informasi)
+                                        <x-card-info :informasi="$klasifikasi->informasi" />
+                                    @endif
                                 </div>
                             @endforeach
                         </x-accordion.body>
@@ -35,7 +38,7 @@
                 @endforeach --}}
             </div>
             {{-- @if ($informasis->isEmpty()) --}}
-                {{-- <div id="empty-message" class="mt-10" hidden>
+            {{-- <div id="empty-message" class="mt-10" hidden>
                     <p class="text-main/66 text-center italic">Data Informasi Kosong</p>
                 </div> --}}
             {{-- @endif --}}
@@ -86,7 +89,7 @@
                     $list.addClass('hidden');
                     $empty.addClass('hidden');
                 } else {
-                    $accordion.addClass('hidden');  
+                    $accordion.addClass('hidden');
                     $list.removeClass('hidden');
                     $empty.removeClass('hidden');
                     fetchInformasi(query);
