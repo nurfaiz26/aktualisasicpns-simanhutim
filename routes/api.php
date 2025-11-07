@@ -18,3 +18,7 @@ Route::get('/berita/search', [BeritaController::class, 'search']);
 
 // route api for search and filter info
 Route::get('/informasi/search', [InformasiController::class, 'search']);
+
+// route api for search travel
+Route::get('/travel/find-place-id', [TravelController::class, 'placeId']);
+Route::get('/travel/find-place', [TravelController::class, 'place']);
