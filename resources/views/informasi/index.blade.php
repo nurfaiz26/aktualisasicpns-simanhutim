@@ -12,22 +12,20 @@
             <div id="informasi-accordion" class="mt-10 w-full">
                 <x-accordion.layout>
                     @foreach ($mKlasifikasis as $index => $mKlasifikasi)
-                        @if (!$mKlasifikasi->informasi->isEmpty())
-                            <x-accordion.heading judul="{{ $mKlasifikasi['master_klasifikasi'] }}"
-                                accordionHeadingId="accordion-heading-{{ $index }}"
-                                accordionBodyId="accordion-body-{{ $index }}"
-                                isOpen="{{ $index == 0 ? 'true' : 'false' }}" />
-                            <x-accordion.body accordionHeadingId="accordion-heading-{{ $index }}"
-                                accordionBodyId="accordion-body-{{ $index }}">
-                                @foreach ($mKlasifikasi['klasifikasis'] as $klasifikasi)
-                                    <div class="w-full flex justify-center">
-                                        @if ($klasifikasi->informasi)
-                                            <x-card-info :informasi="$klasifikasi->informasi" />
-                                        @endif
-                                    </div>
-                                @endforeach
-                            </x-accordion.body>
-                        @endif
+                        <x-accordion.heading judul="{{ $mKlasifikasi['master_klasifikasi'] }}"
+                            accordionHeadingId="accordion-heading-{{ $index }}"
+                            accordionBodyId="accordion-body-{{ $index }}"
+                            isOpen="{{ $index == 0 ? 'true' : 'false' }}" />
+                        <x-accordion.body accordionHeadingId="accordion-heading-{{ $index }}"
+                            accordionBodyId="accordion-body-{{ $index }}">
+                            @foreach ($mKlasifikasi['klasifikasis'] as $klasifikasi)
+                                <div class="w-full flex justify-center">
+                                    @if ($klasifikasi->informasi)
+                                        <x-card-info :informasi="$klasifikasi->informasi" />
+                                    @endif
+                                </div>
+                            @endforeach
+                        </x-accordion.body>
                     @endforeach
                 </x-accordion.layout>
             </div>
