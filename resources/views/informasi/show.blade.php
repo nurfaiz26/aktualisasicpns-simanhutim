@@ -21,7 +21,7 @@
             </div>
 
             <div class="mt-10 text-main text-justify">
-                <p>{{ $informasi->deskripsi }}</p>
+                <p>{!! nl2br(e($informasi->deskripsi)) !!}</p>
             </div>
         </section>
     </div>

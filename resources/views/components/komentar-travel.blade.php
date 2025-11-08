@@ -16,5 +16,5 @@
 
         </div>
     </div>
-    <p class="text-main line-clamp-3">{{ $komentar->text }}</p>
+    <p class="text-main line-clamp-3"><p>{!! nl2br(e($komentar->text)) !!}</p>
 </div>
