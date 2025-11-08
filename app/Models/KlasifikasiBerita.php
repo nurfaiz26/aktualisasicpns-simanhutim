@@ -19,7 +19,7 @@ class KlasifikasiBerita extends Model
 
     public function berita(): BelongsTo
     {
-        return $this->belongsTo(Berita::class);
+        return $this->belongsTo(Berita::class)->where('status', 'aktif');
     }
 
     public function masterKlasifikasi(): BelongsTo

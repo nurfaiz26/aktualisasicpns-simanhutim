@@ -19,7 +19,7 @@ class KlasifikasiTravel extends Model
 
     public function travel(): BelongsTo
     {
-        return $this->belongsTo(Travel::class);
+        return $this->belongsTo(Travel::class)->where('status', 'aktif');;
     }
 
     public function masterKlasifikasi(): BelongsTo

@@ -45,7 +45,7 @@ class KotaPolicy
      */
     public function delete(User $user, Kota $kota): bool
     {
-        return $user != null;
+        return false;
     }
 
     /**
@@ -53,7 +53,7 @@ class KotaPolicy
      */
     public function restore(User $user, Kota $kota): bool
     {
-        return $user != null;
+        return false;
     }
 
     /**
@@ -61,6 +61,6 @@ class KotaPolicy
      */
     public function forceDelete(User $user, Kota $kota): bool
     {
-        return $user != null;
+        return false;
     }
 }
