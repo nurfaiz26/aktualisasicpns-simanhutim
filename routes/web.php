@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $informasis = Informasi::with('klasifikasis.masterKlasifikasi', 'gambars')->where('status', 'aktif')->limit(5)->get();
     $beritas = Berita::with('klasifikasis.masterKlasifikasi', 'gambars')->where('status', 'aktif')->limit(5)->get();
-    $travels = Travel::with('klasifikasis.masterKlasifikasi', 'gambars', 'kota')->where('status', 'aktif')->limit(5)->get();
+    $travels = Travel::with('klasifikasis.masterKlasifikasi', 'gambars', 'kota')->orderBy('gmap_place_id', 'DESC')->where('status', 'aktif')->limit(5)->get();
 
     return view('beranda', [
         'informasis' => $informasis,
