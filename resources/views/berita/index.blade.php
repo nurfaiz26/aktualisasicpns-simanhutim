@@ -6,12 +6,9 @@
             <div class="mt-10 w-full overflow-auto py-4 pb-4 ps-10 xl:ps-40">
                 <div class="flex items-center gap-8">
                     @foreach ($beritas as $index => $berita)
-                        <div class="w-[480px]">
+                        <div class="w-[480px] @if ($index == 4) pe-10 @endif">
                             <x-card-berita :berita="$berita" />
                         </div>
-                        @if ($index == 4)
-                            <div class="w-100"></div>
-                        @endif
                     @endforeach
                 </div>
             </div>
