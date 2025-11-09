@@ -38,6 +38,12 @@ class TravelTable
     {
         return $table
             ->columns([
+                TextColumn::make('nama')
+                    ->searchable(),
+                TextColumn::make('klasifikasis.masterKlasifikasi.nama') // <-- TAMBAHKAN INI
+                    ->label('Klasifikasi')
+                    ->bulleted()
+                    ->limitList(3),
                 TextColumn::make('kota.nama')
                     ->numeric()
                     ->getStateUsing(fn($record) => $record->kota_id ?: '-')
@@ -50,8 +56,6 @@ class TravelTable
                     ->numeric()
                     ->getStateUsing(fn($record) => $record->jumlah_pelanggaran ?: '-')
                     ->sortable(),
-                TextColumn::make('nama')
-                    ->searchable(),
                 TextColumn::make('no_telepon')
                     ->searchable(),
                 TextColumn::make('email')
