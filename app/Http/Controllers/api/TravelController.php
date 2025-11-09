@@ -36,7 +36,7 @@ class TravelController extends Controller
                 $query->whereIn('id', $klasifikasi->pluck('travel_id'));
             })
             ->where('status', 'aktif')
-            ->orderBy('gmap_place_id', 'DESC')->limit(5)->get();
+            ->orderBy('gmap_place_id', 'DESC')->limit(6)->get();
 
         // $listTravels = ($keyword || $filter)
         //     ? $query->paginate(10)
