@@ -6,9 +6,13 @@
             <div class="mt-10 w-full overflow-auto py-4 pb-4 ps-10 xl:ps-40">
                 <div class="flex items-center gap-8">
                     @foreach ($beritas as $index => $berita)
-                        <div class="w-[480px] @if ($index == 4) me-10 @endif">
+                        <div class="w-[480px]">
                             <x-card-berita :berita="$berita" />
                         </div>
+
+                        @if ($index == 4)
+                            <div class="w-10 h-1 bg-amber-950"></div>
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -56,7 +60,7 @@
         const $list = $('#berita-list');
         const $empty = $('#empty-message');
 
-        function fetchBerita(query = '', filter = '') {            
+        function fetchBerita(query = '', filter = '') {
             $.ajax({
                 url: "/api/berita/search",
                 data: {
@@ -66,7 +70,7 @@
                 beforeSend: function() {
                     $list.html('<p class="text-center text-main/60 italic">Loading...</p>');
                 },
-                success: function(response) {                                        
+                success: function(response) {
                     if (response.count === 0) {
                         $list.attr('hidden');
                         $empty.removeAttr('hidden');
