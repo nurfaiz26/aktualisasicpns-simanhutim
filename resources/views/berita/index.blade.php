@@ -11,7 +11,7 @@
                         </div>
 
                         @if ($index == 4)
-                            <div class="w-10 h-1 bg-amber-950"></div>
+                            <div class="p-1 bg-transparent"></div>
                         @endif
                     @endforeach
                 </div>
