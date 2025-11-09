@@ -4,8 +4,8 @@
         data-accordion-target="#{{ $accordionBodyId }}" aria-expanded="{{ $isOpen }}"
         aria-controls="{{ $accordionBodyId }}">
         <span class="w-full flex items-center gap-2 justify-center">
-            <p class="flex w-fit text-main font-bold">{{ $judul }}</p>
-            <div class="w-full border border-dashed border-main"></div>
+            <p class="whitespace-nowrap text-main font-bold">{{ $judul }}</p>
+            <div class="flex-1 border border-dashed border-main"></div>
         </span>
         <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0 text-main" aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
