@@ -16,7 +16,7 @@ class TravelController extends Controller
      */
     public function index()
     {
-        $travels = Travel::with('klasifikasis.masterKlasifikasi', 'gambars')->limit(5)->get();
+        $travels = Travel::with('klasifikasis.masterKlasifikasi', 'gambars')->limit(5)->orderBy('gmap_place_id', 'DESC')->get();
         $klasifikasis = MasterKlasifikasiTravel::all();
 
         return view('travel.index', [
