@@ -1,7 +1,7 @@
 <a href="berita/{{ $berita->id }}"
     class="w-[480px] h-[200px] flex items-start bg-gradient-to-b from-main/20 to-white hover:bg-main/50">
     <div class="flex-1 p-2 flex items-center justify-center">
-        <div class="w-[240px] h-[180px] bg-transparent rounded-lg">
+        <div class="w-fit h-[180px] bg-transparent rounded-lg">
             <img src="{{ asset(!$berita->gambars->isEmpty() ? route('storage.image', $berita->gambars[0]->url) : 'images/logo-grayscale.png') }}"
                 alt="Logo Ilustrasi" class="w-full h-full object-contain" />
         </div>
