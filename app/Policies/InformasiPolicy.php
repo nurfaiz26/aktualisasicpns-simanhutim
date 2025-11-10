@@ -13,7 +13,7 @@ class InformasiPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class InformasiPolicy
      */
     public function view(User $user, Informasi $informasi): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class InformasiPolicy
      */
     public function create(User $user): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -37,7 +37,7 @@ class InformasiPolicy
      */
     public function update(User $user, Informasi $informasi): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -45,7 +45,7 @@ class InformasiPolicy
      */
     public function delete(User $user, Informasi $informasi): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -53,7 +53,7 @@ class InformasiPolicy
      */
     public function restore(User $user, Informasi $informasi): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -61,6 +61,6 @@ class InformasiPolicy
      */
     public function forceDelete(User $user, Informasi $informasi): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 }

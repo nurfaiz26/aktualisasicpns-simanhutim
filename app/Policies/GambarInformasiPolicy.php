@@ -13,7 +13,7 @@ class GambarInformasiPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class GambarInformasiPolicy
      */
     public function view(User $user, GambarInformasi $gambarInformasi): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class GambarInformasiPolicy
      */
     public function update(User $user, GambarInformasi $gambarInformasi): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -45,7 +45,7 @@ class GambarInformasiPolicy
      */
     public function delete(User $user, GambarInformasi $gambarInformasi): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -53,7 +53,7 @@ class GambarInformasiPolicy
      */
     public function restore(User $user, GambarInformasi $gambarInformasi): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -61,6 +61,6 @@ class GambarInformasiPolicy
      */
     public function forceDelete(User $user, GambarInformasi $gambarInformasi): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 }

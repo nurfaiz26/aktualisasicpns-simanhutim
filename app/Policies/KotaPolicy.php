@@ -13,7 +13,7 @@ class KotaPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class KotaPolicy
      */
     public function view(User $user, Kota $kota): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class KotaPolicy
      */
     public function create(User $user): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -37,7 +37,7 @@ class KotaPolicy
      */
     public function update(User $user, Kota $kota): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**

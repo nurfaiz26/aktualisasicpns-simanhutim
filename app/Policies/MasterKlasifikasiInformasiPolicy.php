@@ -13,7 +13,7 @@ class MasterKlasifikasiInformasiPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class MasterKlasifikasiInformasiPolicy
      */
     public function view(User $user, MasterKlasifikasiInformasi $masterKlasifikasiInformasi): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class MasterKlasifikasiInformasiPolicy
      */
     public function create(User $user): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -37,7 +37,7 @@ class MasterKlasifikasiInformasiPolicy
      */
     public function update(User $user, MasterKlasifikasiInformasi $masterKlasifikasiInformasi): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**

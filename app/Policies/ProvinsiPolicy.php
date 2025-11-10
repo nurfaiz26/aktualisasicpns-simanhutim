@@ -13,7 +13,7 @@ class ProvinsiPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class ProvinsiPolicy
      */
     public function view(User $user, Provinsi $provinsi): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class ProvinsiPolicy
      */
     public function create(User $user): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -37,7 +37,7 @@ class ProvinsiPolicy
      */
     public function update(User $user, Provinsi $provinsi): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**

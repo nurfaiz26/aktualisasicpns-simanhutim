@@ -13,7 +13,7 @@ class UserDataPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class UserDataPolicy
      */
     public function view(User $user, UserData $userData): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class UserDataPolicy
      */
     public function update(User $user, UserData $userData): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**

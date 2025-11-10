@@ -13,7 +13,7 @@ class KlasifikasiBeritaPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class KlasifikasiBeritaPolicy
      */
     public function view(User $user, KlasifikasiBerita $klasifikasiBerita): bool
     {
-        return $user != null;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class KlasifikasiBeritaPolicy
      */
     public function update(User $user, KlasifikasiBerita $klasifikasiBerita): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -45,7 +45,7 @@ class KlasifikasiBeritaPolicy
      */
     public function delete(User $user, KlasifikasiBerita $klasifikasiBerita): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -53,7 +53,7 @@ class KlasifikasiBeritaPolicy
      */
     public function restore(User $user, KlasifikasiBerita $klasifikasiBerita): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 
     /**
@@ -61,6 +61,6 @@ class KlasifikasiBeritaPolicy
      */
     public function forceDelete(User $user, KlasifikasiBerita $klasifikasiBerita): bool
     {
-        return $user != null;
+        return $user != null && $user->id == 1;
     }
 }
