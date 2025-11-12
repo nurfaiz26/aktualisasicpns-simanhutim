@@ -69,6 +69,9 @@
                 <li>
                     <a href="/tentang" class="hover:bg-gray-100 md:hover:bg-transparent">Tentang</a>
                 </li>
+                <li>
+                    <a href="https://forms.gle/FRZLWeY3KFjEGaXr7" target="_blank" class="hover:bg-gray-100 md:hover:bg-transparent">Survei</a>
+                </li>
             </ul>
         </div>
     </div>
